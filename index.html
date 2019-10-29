@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ai là triệu phú</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+
+</head>
+<body >
+    <div  id="main-title">Ai là triệu phú</div>
+
+    <div id="main">
+
+        <div id="noti-endgame">
+            <div>Số tiền của bạn</div>
+            <button id="play-again" onclick="playAgain()">Chơi lại</button>
+        </div>
+        <div id="noti-wingame">
+            <div>Bạn Thắng</div>
+            <!-- <button id="play-again" onclick="playAgain()">Chơi lại</button> -->
+        </div>
+
+        <div style="display: inline-block; margin-left: calc( 50% - 500px); height: 320px; width: 100%;">
+            <div id="logo"></div>
+            <div id="line-life">
+                <div class="help-button" id="line-life-5050" onclick="lifeLine5050();"><img src="img/Classic5050.png" width="50px"></div>
+                <div class="help-button" id="ask-viewer" onclick="askViewer();"><img src="img/ClassicATA.png" width="50px"></div>
+                <div class="help-button" id="call-expertise" onclick=";"><img src="img/ClassicPAF.png" width="50px"></div>
+
+                
+            </div>
+            <div id="question-board"></div>
+            <div id="ask-viewer-board-result">
+                <div class="percent" >
+                        <div id="percent-number-0"></div>
+                        <div class="column" id="percent-column-0"></div>
+                </div>
+                <div class="percent" > 
+                    <div id="percent-number-1"></div>
+                    <div class="column" id="percent-column-1"></div>
+                </div>
+                <div class="percent" >
+                        <div id="percent-number-2"></div>
+                        <div class="column" id="percent-column-2"></div>
+                </div>
+                <div class="percent" >
+                        <div id="percent-number-3"></div>
+                        <div class="column" id="percent-column-3"></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="start-board">
+            <button id="start" onclick="startGame()">Start</button>
+            <button id="guide">Hướng dẫn</button>
+        </div>
+        
+        <div class="animated" id="question">
+            <div id="title-question"></div>
+            <table id="answers">
+                <tr>
+                    <td class="answer" id="answer-0" onclick="answerChecked(0)"></td>
+                    <td class="answer" id="answer-1" onclick="answerChecked(1)"></td>
+                </tr>
+                <tr>
+                    <td class="answer" id="answer-2" onclick="answerChecked(2)"></td>
+                    <td class="answer" id="answer-3" onclick="answerChecked(3)"></td>
+                </tr>
+            </table> 
+
+        </div> 
+        <button id="submit-answer" onclick="submitAnswer()">Đây là câu trả lời cuối cùng của tôi</button>
+
+
+    </div>
+    <audio style="display: none;" id="audio-true-1">
+            <source src="MusicEffect/TRUE 1.mp3">
+    </audio>
+    <audio style="display: none;" id="audio-true-2">
+            <source src="MusicEffect/TRUE 2.mp3">
+    </audio>
+    <audio style="display: none;" id="audio-start">
+            <source src="MusicEffect/START SOUND.mp3">
+    </audio>
+    <audio style="display: none;" id="audio-intro">
+            <source src="MusicEffect/INTRO.mp3">
+    </audio>
+    
+    <script src="question.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
