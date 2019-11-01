@@ -17,34 +17,44 @@ function setLevel(){
     level = selectedQuestions[indexQuestion].level;
 }
 function displayQuestion() {
-    is5050 = false;
-    isChecked = false;
-    checkRightAnswer();
-    setLevel();
-    answerChecked(-1);
-    removeAnimate();
-    displayQuestionBoard();
-    document.getElementById("question").style.display = "block";
-    document.getElementById("question").classList.add('bounce');
-    document.getElementById(`title-question`).innerHTML = selectedQuestions[indexQuestion].title ;
-    for( let i = 0; i < 4; i++){
-        document.getElementById(`answer-${i}`).innerHTML = `${titleAnswer[i]}.${selectedQuestions[indexQuestion].answers[i].content}`;
-        // document.getElementById(`answer-${i}`).classList.add('bounce');
+    if (indexQuestion < 15){
+        is5050 = false;
+        isChecked = false;
+        checkRightAnswer();
+        setLevel();
+        answerChecked(-1);
+        removeAnimate();
+        displayQuestionBoard();
+        document.getElementById("question").style.display = "block";
+        document.getElementById("question").classList.add('bounce');
+        document.getElementById(`title-question`).innerHTML = selectedQuestions[indexQuestion].title ;
+        for( let i = 0; i < 4; i++){
+            document.getElementById(`answer-${i}`).innerHTML = `${titleAnswer[i]}.${selectedQuestions[indexQuestion].answers[i].content}`;
+            // document.getElementById(`answer-${i}`).classList.add('bounce');
+        }
+
+    } else {
+        document.getElementById("noti-wingame").style.display = "block";
     }
 
 }
 // Start Game 
 
 function startGame() {
+    getName();
+    selectedQuestions = [];
     chon15cauhoi(questions);
     document.getElementById("audio-start").play();
     displayQuestion();
+    document.getElementById("question").style.display = "block";
     document.getElementById("start-board").style.display = "none";
-    document.getElementById("submit-answer").style.display = "block";
     document.getElementById("line-life").style.display = "inline-block";
-    // document.getElementById("line-life-5050").style.display = "inline-block";
-    // document.getElementById("ask-viewer").style.display = "inline-block";
-    
+    document.getElementById("main-title").innerHTML = `<div id="title-text">Chào mừng ${playerName} đến với game Ai Là Triệu Phú</div>`;
+}
+//Stop Game
+function stopGame() {
+    isChecked = true;
+    document.getElementById("noti-endgame").style.display = "block";
 }
 // Chơi lại
 function playAgain() {
@@ -53,12 +63,12 @@ function playAgain() {
     document.getElementById("noti-endgame").style.display = "none";  
 }
 // Hàm nhận index từ câu trả lời
-var index = -1;
+var indexChecked = -1;
 var isChecked = false;
-function answerChecked(indexChecked) {
+function answerChecked(index) {
     if (isChecked === false){
         // Đổi màu câu trả lời đc chọn
-        index = indexChecked;
+        indexChecked = index;
         for (i = 0; i < 4; i++){
             if(i === indexChecked){
                 // document.getElementById(`answer-${indexChecked}`).style.backgroundImage = "linear-gradient(#B76B27, #FFCB7A)";
@@ -75,7 +85,7 @@ function answerChecked(indexChecked) {
 // Submit câu trả lời cuối cùng   
 function submitAnswer() {
     isChecked = true;
-    if (index === -1){
+    if (indexChecked === -1){
     alert("bạn chưa trả lời")
     isChecked = false;
     }else {
@@ -85,20 +95,13 @@ function submitAnswer() {
 }
 // Kiểm tra câu trả lời
 function checkAnswer() {
-    if (selectedQuestions[indexQuestion].answers[index].isRight === true){
+    if (selectedQuestions[indexQuestion].answers[indexChecked].isRight === true){
         setTimeout(function(){
-            document.getElementById(`answer-${index}`).classList.add('animated','tada');
+            document.getElementById(`answer-${indexChecked}`).classList.add('animated','tada');
             document.getElementById(`audio-true-1`).play();
             
         },level *1000);
-        setTimeout(function(){
-            if ( indexQuestion < selectedQuestions.length){
-                indexQuestion++;
-                displayQuestion();
-            }else {
-                document.getElementById("noti-wingame").style.display = "block"; 
-            }
-        },5000);
+        setTimeout(function(){indexQuestion++;displayQuestion();},level*1000 + 2000);
     }else {
         for ( i = 0; i < 4; i++){
             if (selectedQuestions[indexQuestion].answers[i].isRight === true ){
@@ -141,7 +144,7 @@ function lifeLine5050(){
         if (i === indexCut1 || i === indexCut2 ){
             document.getElementById(`answer-${i}`).innerHTML = ``;
         }else{
-            document.getElementById(`answer-${i}`).innerHTML = `${selectedQuestions[indexQuestion].answers[i].content}`;
+            document.getElementById(`answer-${i}`).innerHTML = `${titleAnswer[i]}.${selectedQuestions[indexQuestion].answers[i].content}`;
         }
     }
 }
@@ -158,8 +161,8 @@ function askViewer() {
         percentAnswer[1] = 100 - percentAnswer[0]
         for ( i = 0; i < 4; i++){
             if( i != indexRight && i != indexCut1 && i !=indexCut2){ 
-                document.getElementById(`percent-column--${i}`).style.height = `calc( 2 *${percentAnswer[i]}px)` ;
-                document.getElementById(`percent-number-${i}`).innerHTML = `${percentAnswer[i]}`;
+                document.getElementById(`percent-column-${i}`).style.height = `calc( 2 *${percentAnswer[1]}px)` ;
+                document.getElementById(`percent-number-${i}`).innerHTML = `${percentAnswer[1]}`;
             }
         }
     }else {
@@ -181,18 +184,65 @@ function getRanDomPercent(min, max) {
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
 }
+//check Index Professor
+var indexProfessor = null;
+function checkIndexProfes(indexProfes) {
+    switch (indexProfes) {
+        case 0:
+            indexProfessor = "sport";
+            break;
+        case 1:
+            indexProfessor = "life";
+            break;
+        case 2:
+            indexProfessor = "science";
+            break;
+        case 3:
+            indexProfessor = "art";
+            break;
+    }
+}
+// Hỏi ý kiến chuyên gia
+function displayAskProfessor() {
+    document.getElementById('ask-professor-board').style.display = "block";
+}
+function askProfessor(indexProfes) {
+    checkIndexProfes(indexProfes);
+    let indexRandomProfes = null;
+    if ( selectedQuestions[indexQuestion].main === indexProfessor){
+        console.log ( selectedQuestions[indexQuestion].answers[indexRight].content);
+    }else { 
+        do{
+            indexRandomProfes = Math.floor(Math.random()*4);
+        } while (indexRandomProfes === indexRight || indexRandomProfes === indexCut1 || indexRandomProfes === indexCut2);
+        console.log ( selectedQuestions[indexQuestion].answers[indexRandomProfes].content);
 
+    }
+}
 
 // Display question board
 function displayQuestionBoard() {
+    document.getElementById("question-board").style.display = "block";
     let list = "";
     money = [500,1000,2000,3000,5000,7000,10000,20000,30000,50000,100000,250000,500000,1000000,2000000];
     for (i = selectedQuestions.length - 1; i >= 0; i--){
         if ( i === indexQuestion){
             list += `<div style="background-color: yellow; color: black;" class="level-question"> &#9830 &#160 Câu ${i+1}: ${money[i]}$</div>`
-        }else{
+        }else if ( (i+1) % 5 === 0){
+            list += `<div style="color: yellow;" class="level-question"> &#9830 &#160 Câu ${i+1}: ${money[i]}$</div>`;
+        }
+        else{
             list += `<div class="level-question"> &#9830 &#160 Câu ${i+1}: ${money[i]}$</div>`;
         }
     }
     document.getElementById("question-board").innerHTML = list;
+}
+
+// Lấy tên người chơi
+var playerName = "";
+function getName() {
+    playerName = document.getElementById("player-name").value;
+}
+function playIntro (){
+    document.getElementById("audio-intro").play();
 }
