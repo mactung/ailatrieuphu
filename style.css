@@ -1,69 +1,95 @@
-html {
+html,body {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-size: 18px;
+    font-size: 20px;
+    height: 100%;
+    margin: 0;
+    background-image: url(img/Background_BaseGame.png);
+    background-size: 100% 100%;
+}
+#main-title {
+    height:10%;
+    width: 1200px;
+    margin: 10px auto 0 calc(50% - 600px);
+    background-image: radial-gradient( #3366FF,#102693);
+    font-size: 30px;
+    border: 3px solid #F9CA3B;
+    border-radius: 20px;
+    text-align: center;
+    color: white;
+
+    
 }
 #main {
     /* padding-bottom: 40px; */
     width: 1200px;
-    margin-top: 10px;
-    background-image: url(img/background.png);
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
+    height: 90%;
+    margin-top: 5px;
+
     display: inline-block;
     margin-left: calc( 50% - 600px);
     color: white;
-    position: relative;
     min-height: 600px;
     padding-bottom: 30px;
 }
-#main-title {
-    height:40px;
-    width: 1200px;
-    margin: 10px auto 0 calc(50% - 600px);
-    background-color: #282828;
-    font-size: 30px;
+#main-left {
+    float: left;
+    width: 15%;
+    height: 90%;
+    background-image: linear-gradient(#102693, #3366FF);
+    border: 3px solid #F9CA3B;
+    border-radius: 20px;
+    margin: 5px;
     text-align: center;
-    color: white;
+}
+#main-center {
+
+    background-image: radial-gradient(farthest-side at 50% 20%, #3366FF,#102693);
+    float: left;
+    width: 60%;
+    height: 90%;
+    background-color: blueviolet;
+    border: 3px solid #F9CA3B;
+    border-radius: 20px;
+    margin: 5px;
     position: relative;
-    overflow: hidden;
+
 
 }
-#title-text{
-    line-height: 40px;
-    /* font-family: "League Gothic", Impact, sans-serif; */
-    -webkit-animation: color-change 1s infinite;
-    -moz-animation: color-change 1s infinite;
-    animation: color-change 1s infinite;
-    position: absolute;
-}
-@-webkit-keyframes color-change {
-    0% { color: red; }
-    50% { color: blue; }
-    100% { color: red; }
-    from { top: -10px;}
-    to { top: 0px;}
-}
-@-moz-keyframes color-change {
-    0% { color: red; }
-    50% { color: blue; }
-    100% { color: red; }
-    from { top: -10px;}
-    to { top: 0px;}
-}
+#main-right {
+    float: left;
+    width: 20%;
+    height: 90%;
+    background-image: linear-gradient(#102693, #3366FF);
+    border: 3px solid #F9CA3B;
+    border-radius: 20px;
+    margin: 5px;
 
-@keyframes color-change {
-    0% { color: red; }
-    50% { color: blue; }
-    100% { color: red; }
-    from { top: -10px;}
-    to { top: 0px;}
+}
+.help-button{
+    margin: 20px 10px 20px 10px;
+}
+.help-button:hover{
+    cursor: pointer;
 }
 #content{
     display: inline-block;
     /* margin-left: calc( 50% - 500px); */
-    height: 400px;
+    height: 55%;
     width: 100%;
 }
+#question-board{
+    font-family: fantasy;
+    padding: 5px;
+    font-size: 100%;
+    display: none;
+    z-index: 1;
+}
+#title-text{
+    line-height: 40px;
+
+}
+
+
 
 #question {
     margin: 0px auto 0 auto;
@@ -75,21 +101,26 @@ html {
     /* background-color: #2A7BD8; */
     background-image: linear-gradient(#102693, #3366FF);
     padding : 10px;
-    border: 3px solid #FFC956;
+    border: 3px solid #F9CA3B;
     border-radius: 20px;
     width: 90%;
     margin-left: auto;
     margin-right: auto;
 }
 #answers {
-    width: 800px;
+    /* width: 800px; */
     margin: 10px auto 10px auto;
 }
 .answer {
+    display: inline-block;
     text-align: left;
     width: 35%;
-    height: 50px;
+    
     padding-left: 30px;
+    margin-bottom: 2px;
+    border: 3px solid #1B87E6;
+    border-radius: 10px;
+    padding: 6px;
 
 }
 .checked{
@@ -98,16 +129,13 @@ html {
 .no-checked{
     background-image: linear-gradient(#102693, #3366FF);
 }
-/* .no-checked:hover{
-    background-image: linear-gradient(#FFC956, #FFF5D2);
-} */
-td {
-    border: 3px solid #CDF8FE;
-    border-radius: 10px;
+.no-checked:hover{
+    cursor: pointer;
 }
-/* .answer:hover {
-    background-color: #FFCD6F;
-} */
+button:hover {
+    cursor: pointer;
+}
+
 #noti-endgame{
     width: 300px; 
     height: 200px; 
@@ -130,12 +158,11 @@ td {
     z-index: 2;
 }
 #line-life {
-    display: none;
+    /* display: none; */
     margin: 5px;
 }
 #start-board{
-    /* margin-top : 350px; */
-    /* margin-left: calc( 50% - 75px); */
+
     text-align: center;
 }
 input {
@@ -145,18 +172,18 @@ input {
     margin: 10px;
     text-align: center;
     border: 0;
-    border-bottom: 2px solid #1976D2;
+    border-bottom: 2px solid #B76B27;
     background: transparent;
-	color: #BBDEFB;
+	color: #B76B27;
 
 }
 input:focus {
     outline: 0;
-       color: #BBDEFB;
+       color: #FFCB7A;
    }
    
 input::placeholder {
-    color: #1976D2;
+    color: #FFCB7A;
    }
 #start {
     width: 150px;
@@ -184,16 +211,13 @@ input::placeholder {
     height: 30px;
     background-image: linear-gradient(#102693, #3366FF);
     /* position: absolute; */
-    margin-left: calc( 50% - 125px);
+    /* margin-left: calc( 50% - 125px); */
     color: white;
     border-radius: 20px;
 }
 #stop-game{
     height: 30px;
     background-image: linear-gradient(#102693, #3366FF);
-    position: absolute;
-    right: 0px;
-    bottom: 0px;
     border-radius: 20px;
     color: white;
 
@@ -208,20 +232,7 @@ input::placeholder {
     left: calc( 50% - 110px);
     z-index: 1;
 }
-#question-board{
-    /* font-family: fantasy; */
-    background-image: linear-gradient(#102693, #3366FF);
-    position: absolute;
-    right: 10px;
-    top: 5px;
-    padding: 5px;
-    font-size: 90%;
-    display: none;
-    border-radius: 20px;
-    z-index: 1;
-    border: 3px solid #1B87E6;
-    /* box-shadow: 5px 10px #888888; */
-}
+
 #ask-professor-board{
     display: none;
     width: 255px;
@@ -246,20 +257,26 @@ input::placeholder {
     z-index:2;
     background-color: cadetblue;
 
+
 }
 .percent {
-    display: inline-block;
-    padding: 10px;
-    height: 100%;
-    width: 40px;
-
-
+    display: block;
+    padding: 5px;
+    height: 40px;
+    width: 100%;
+    float: left;
+    /* justify-content: center; */
 }
 .column{
-    width: 35px;
-    height: 0px;
-    width: 100%;
-    -webkit-transition: height 2.5s ease;
-    transition: height 2.5s ease;
+    width: 0px;
+    height: 35px;
+    /* width: 100%; */
+    -webkit-transition: width 2.5s ease;
+    transition: width 2.5s ease;
     background-image: linear-gradient(#3366FF, #102693);
+    display: inline-block;
+}
+.number {
+    display: inline-block;
+
 }

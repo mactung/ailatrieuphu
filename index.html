@@ -9,82 +9,104 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
 
 </head>
-<body onload="playIntro();" >
+<body >
     <div  id="main-title">Ai là triệu phú</div>
 
     <div id="main">
-        
-        <div id="logo"></div>
-        <div id="noti-endgame">
-            <div>Số tiền của bạn</div>
-            <button id="play-again" onclick="playAgain()">Chơi lại</button>
-        </div>
-        <div id="noti-wingame">
-            <div>Bạn Thắng</div>
-
-        </div>
-
-        <div id="content">
-
+        <div id ="main-left">
             <div id="line-life">
-                <div class="help-button" id="line-life-5050" onclick="lifeLine5050();"><img src="img/Classic5050.png" width="50px"></div>
-                <div class="help-button" id="ask-viewer" onclick="askViewer();"><img src="img/ClassicATA.png" width="50px"></div>
-                <div class="help-button" id="ask-professor" onclick="displayAskProfessor();"><img src="img/ClassicPAF.png" width="50px"></div>
+                <div class="help-button" id="line-life-5050" onclick="lifeLine5050();"><img src="img/Classic5050.png" width="100px"></div>
+                <div class="help-button" id="ask-viewer" onclick="askViewer();"><img src="img/ClassicATA.png" width="100px"></div>
+                <div class="help-button" id="ask-professor" onclick="displayAskProfessor();"><img src="img/ClassicPAF.png" width="100px"></div>
             </div>
-            <div id="question-board"></div>
-            <div id="ask-viewer-board-result">
-                <div class="percent" >
-                        <div id="percent-number-0"></div>
-                        <div class="column" id="percent-column-0"></div>
-                </div>
-                <div class="percent" > 
-                    <div id="percent-number-1"></div>
-                    <div class="column" id="percent-column-1"></div>
-                </div>
-                <div class="percent" >
-                        <div id="percent-number-2"></div>
-                        <div class="column" id="percent-column-2"></div>
-                </div>
-                <div class="percent" >
-                        <div id="percent-number-3"></div>
-                        <div class="column" id="percent-column-3"></div>
-                </div>
-            </div>
-            <table id ="ask-professor-board" onclick="">
-                <tr>
-                    <td id="sport" onclick="askProfessor(0);">Sport</td>
-                    <td id="life" onclick="askProfessor(1);">Life</td>
-                </tr>
-                <tr>
-                    <td id="science" onclick="askProfessor(2);">Science</td>
-                    <td id="art" onclick="askProfessor(3);">Art</td>
-                </tr>
-            </table>
-        </div>
-
-        <div id="start-board">
-            <input type="text" id="player-name" placeholder="Nhập tên của bạn">
-
-            <button id="start" onclick="startGame()">Start</button>
-            <button id="guide">Hướng dẫn</button>
-        </div>
-        
-        <div class="animated" id="question">
-            <div id="title-question"></div>
-            <table id="answers">
-                <tr>
-                    <td class="answer" id="answer-0" onclick="answerChecked(0)"></td>
-                    <td class="answer" id="answer-1" onclick="answerChecked(1)"></td>
-                </tr>
-                <tr>
-                    <td class="answer" id="answer-2" onclick="answerChecked(2)"></td>
-                    <td class="answer" id="answer-3" onclick="answerChecked(3)"></td>
-                </tr>
-            </table> 
-
-            <button id="submit-answer" onclick="submitAnswer();">Đây là câu trả lời cuối cùng của tôi</button>
             <button id="stop-game" type="button" onclick="stopGame();">Tôi muốn dừng cuộc chơi</button>
-        </div> 
+
+        </div>
+
+        <div id ="main-center">
+            <div id="logo"></div>
+            <div id="noti-endgame">
+                <div>Số tiền của bạn</div>
+                <button id="play-again" onclick="playAgain()">Chơi lại</button>
+            </div>
+            <div id="noti-wingame">
+                <div>Bạn Thắng</div>
+    
+            </div>
+            <div id="content">
+                <div id="ask-viewer-board-result">
+    
+                        <div class="percent" >
+                            <p>A</p>
+                            <div class="number"  id="percent-number-0"></div>
+                            <div class="column" id="percent-column-0"></div>
+                        </div>
+                        <div class="percent" > 
+                            <p>B</p>
+                            <div class="number" id="percent-number-1"></div>
+                            <div class="column" id="percent-column-1"></div>
+                        </div>
+                        <div class="percent" >
+                            <p>C</p>
+                            <div  class="number" id="percent-number-2"></div>
+                            <div class="column" id="percent-column-2"></div>
+                        </div>
+                        <div class="percent" >
+                            <p>D</p>
+                            <div class="number"  id="percent-number-3"></div>
+                            <div class="column" id="percent-column-3"></div>
+                        </div>
+                        <button id="close-board" onclick="closeAskViewerBoard();">Close</button>
+                    
+                </div>
+                <div>
+                    <table id ="ask-professor-board" onclick="">
+                        <tr>
+                            <td id="sport" onclick="askProfessor(0);">Sport</td>
+                            <td id="life" onclick="askProfessor(1);">Life</td>
+                        </tr>
+                        <tr>
+                            <td id="science" onclick="askProfessor(2);">Science</td>
+                            <td id="art" onclick="askProfessor(3);">Art</td>
+                        </tr>
+                        <div id="suggest-answer"></div>
+                    </table>
+                </div>
+            </div>
+            <div id="start-board">
+                <input type="text" id="player-name" placeholder="Nhập tên của bạn">
+    
+                <button id="start" onclick="startGame()">Start</button>
+                <button id="guide">Hướng dẫn</button>
+            </div>
+            <div class="animated" id="question">
+                <div id="title-question"></div>
+                <div id="answers">
+                    <div>
+                        <div class="answer" id="answer-0" onclick="answerChecked(0)"></div>
+                        <div class="answer" id="answer-1" onclick="answerChecked(1)"></div>
+                    </div>
+                    <div>
+                        <div class="answer" id="answer-2" onclick="answerChecked(2)"></div>
+                        <div class="answer" id="answer-3" onclick="answerChecked(3)"></div>
+                    </div>
+                </div> 
+    
+                <button id="submit-answer" onclick="submitAnswer();">Đây là câu trả lời cuối cùng của tôi</button>
+            </div> 
+
+        </div>
+
+        <div id ="main-right">
+            <div id="question-board"></div>
+        </div>
+
+
+
+
+
+        
+
         
 
     </div>

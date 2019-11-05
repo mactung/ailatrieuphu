@@ -1,6 +1,6 @@
 var question1 = {
     title : 'Vua bóng đá Pelé đã ghi được bao nhiêu bàn thắng trong toàn bộ sự nghiệp của mình?',
-    main : 'sport',
+    major : 'sport',
     level : 4,
     answers : [
         {
@@ -26,7 +26,7 @@ var question1 = {
 
 var question2 = {
     title : 'Giải vô địch bóng đá thế giới(FIFA World Cup) lần đầu tiên được tổ chức ở đâu?',
-    main : 'sport',
+    major : 'sport',
     level : 4,
     answers : [
         {
@@ -52,7 +52,7 @@ var question2 = {
 
 var question3 = {
     title : 'Môn võ nào được gọi là Hiệp Khí Đạo?',
-    main : 'sport',
+    major : 'sport',
     level : 3,
     answers : [
         {
@@ -78,7 +78,7 @@ var question3 = {
 
 var question4 = {
     title : 'Đội tuyển nào nắm giữ kỉ lục về số lần vô địch FIFA World Cup (5 lần)?',
-    main : 'sport',
+    major : 'sport',
     level : 3,
     answers : [
         {
@@ -104,7 +104,7 @@ var question4 = {
 
 var question5 = {
     title : 'Môn võ nào sau đây bắt nguồn từ Hàn Quốc',
-    main : 'sport',
+    major : 'sport',
     level : 2,
     answers : [
         {
@@ -130,7 +130,7 @@ var question5 = {
 
 var question6 = {
     title : 'Đội bóng nào là nhà vô địch AFF Suzuki Cup 2018',
-    main : 'sport',
+    major : 'sport',
     level : 1,
     answers : [
         {
@@ -156,7 +156,7 @@ var question6 = {
 
 var question7 = {
     title : 'Trong lịch sử World Cup, có bao nhiệu đội bóng vô địch với tư cách là đội chủ nhà?',
-    main : 'sport',
+    major : 'sport',
     level : 4,
     answers : [
         {
@@ -182,7 +182,7 @@ var question7 = {
 
 var question8 = {
     title : 'Lance Amstrong đã vô địch giải đua xe đạp vòng quanh nước Pháp (Tour de France) bao nhiêu lần?',
-    main : 'sport',
+    major : 'sport',
     level : 3,
     answers : [
         {
@@ -208,7 +208,7 @@ var question8 = {
 
 var question9 = {
     title : 'Nhà vô địch của FIFA World Cup 2018 là đội tuyển nào?',
-    main : 'sport',
+    major : 'sport',
     level : 2,
     answers : [
         {
@@ -234,7 +234,7 @@ var question9 = {
 
 var question10 = {
     title : 'Huấn luyện viên José Mourinho giành chức vô địch Champions League lần đầu tiên cùng câu lạc bộ nào?',
-    main : 'sport',
+    major : 'sport',
     level : 2,
     answers : [
         {
@@ -261,7 +261,7 @@ var question10 = {
 
 var question11 = {
     title : 'Câu lạc bộ Juventus có biệt danh là gì?',
-    main : 'sport',
+    major : 'sport',
     level : 2,
     answers : [
         {
@@ -287,7 +287,7 @@ var question11 = {
 
 var question12 = {
     title : 'Ai là người vô địch FIFA World Cup trên cả cương vị cầu thủ lẫn huẩn luyện viên?',
-    main : 'sport',
+    major : 'sport',
     level : 3,
     answers : [
         {
@@ -313,7 +313,7 @@ var question12 = {
 
 var question13 = {
     title : 'Một trận thi đấu bóng đá có bao nhiêu hiệp chính?',
-    main : 'sport',
+    major : 'sport',
     level : 1,
     answers : [
         {
@@ -339,7 +339,7 @@ var question13 = {
 
 var question14 = {
     title : 'Môn thể thao nào vật động viên không được đi giày để thi đấu?',
-    main : 'sport',
+    major : 'sport',
     level : 1,
     answers : [
         {
@@ -365,7 +365,7 @@ var question14 = {
 
 var question15 = {
     title : 'Tại thế vận hội Bắc Kinh 2008, kình ngư Micheal Phelps đã giành được bao nhiêu huy chương?',
-    main : 'sport',
+    major : 'sport',
     level : 3,
     answers : [
         {
@@ -391,7 +391,7 @@ var question15 = {
 
 var question16 = {
     title : 'Ai là người nắm giữ kỉ lục thế giới nội dung 100m nam ở bộ môn điền kinh?',
-    main : 'sport',
+    major : 'sport',
     level : 2,
     answers : [
         {
@@ -417,7 +417,7 @@ var question16 = {
 
 var question17 = {
     title : 'Zizou là biệt danh của cầu thủ nào?',
-    main : 'sport',
+    major : 'sport',
     level : 2,
     answers : [
         {
@@ -443,7 +443,7 @@ var question17 = {
 
 var question18 = {
     title : 'Nhà vô địch đầu tiên của FIFA World Cup là đội tuyển nào?',
-    main : 'sport',
+    major : 'sport',
     level : 3,
     answers : [
         {
@@ -469,7 +469,7 @@ var question18 = {
 
 var question19 = {
     title : 'Bóng bàn bắt nguồn từ quốc gia nào',
-    main : 'sport',
+    major : 'sport',
     level : 3,
     answers : [
         {
@@ -495,7 +495,7 @@ var question19 = {
 
 var question20 = {
     title : 'Giải đua xe đạp vòng quanh nước Pháp (Tour de France) lần đầu tiên được tổ chức vào năm nào?',
-    main : 'sport',
+    major : 'sport',
     level : 5,
     answers : [
         {
@@ -521,7 +521,7 @@ var question20 = {
 
 var question21 = {
     title: 'Mạnh vì..., bạo vì tiền',
-    main: 'life', 
+    major: 'life', 
     level: 1,
     answers : [
         {
@@ -544,7 +544,7 @@ var question21 = {
 }
 var question22 = {
     title: 'Monday trong tiếng Anh là thứ mấy trong tuần',
-    main: 'life', 
+    major: 'life', 
     level: 1,
     answers : [
         {
@@ -567,7 +567,7 @@ var question22 = {
 }
 var question23 = {
     title: 'Người đẹp vì lụa, ... tốt vì phân',
-    main: 'life', 
+    major: 'life', 
     level: 1,
     answers : [
         {
@@ -590,7 +590,7 @@ var question23 = {
 }
 var question24 = {
     title: 'Khả năng đặc biệt có thể làm cho người khác bị mê gọi là',
-    main: 'life', 
+    major: 'life', 
     level: 1,
     answers : [
         {
@@ -613,7 +613,7 @@ var question24 = {
 }
 var question25 = {
     title: 'Ngọn núi nào cao nhất Nhật Bản',
-    main: 'life', 
+    major: 'life', 
     level: 1,
     answers : [
         {
@@ -636,7 +636,7 @@ var question25 = {
 }
 var question26 = {
     title: 'Loại vật liệu dùng trong sản xuất thủy tinh',
-    main: 'science', 
+    major: 'science', 
     level: 1,
     answers : [
         {
@@ -659,7 +659,7 @@ var question26 = {
 }
 var question27 = {
     title: 'Tim người gồm bao nhiêu ngăn?',
-    main: 'science', 
+    major: 'science', 
     level: 1,
     answers : [
         {
@@ -682,7 +682,7 @@ var question27 = {
 }
 var question28 = {
     title: 'Fe là tên nguyên tố hóa học của',
-    main: 'science', 
+    major: 'science', 
     level: 1,
     answers : [
         {
@@ -705,7 +705,7 @@ var question28 = {
 }
 var question29 = {
     title: 'Hiện tượng chất lỏng chuyển thành dạng hơi',
-    main: 'science', 
+    major: 'science', 
     level: 1,
     answers : [
         {
@@ -728,7 +728,7 @@ var question29 = {
 }
 var question30 = {
     title: 'Bài hát mang tên Lạc Trôi do ai sáng tác',
-    main: 'art', 
+    major: 'art', 
     level: 1,
     answers : [
         {
@@ -751,7 +751,7 @@ var question30 = {
 }
 var question31 = {
     title: 'Chú chó trong tác phẩm Lão Hạc mang tên',
-    main: 'art', 
+    major: 'art', 
     level: 1,
     answers : [
         {
@@ -774,7 +774,7 @@ var question31 = {
 }
 var question32 = {
     title: 'Người em của Thúy Kiều trong tác phẩm Truyện Kiều tên là',
-    main: 'art', 
+    major: 'art', 
     level: 1,
     answers : [
         {
@@ -797,7 +797,7 @@ var question32 = {
 }
 var question33 = {
     title: 'Trang phục truyền thống của Nhật Bản là',
-    main: 'art', 
+    major: 'art', 
     level: 1,
     answers : [
         {
@@ -820,7 +820,7 @@ var question33 = {
 }
 var question34 = {
     title: 'Ai là người đứng đầu ngành châm cứu ở Việt Nam',
-    main: 'life', 
+    major: 'life', 
     level: 5,
     answers : [
         {
@@ -843,7 +843,7 @@ var question34 = {
 }
 var question35 = {
     title: 'Thành phố nào là trung tâm của cách mạng tháng 10 Nga',
-    main: 'life', 
+    major: 'life', 
     level: 5,
     answers : [
         {
@@ -866,7 +866,7 @@ var question35 = {
 }
 var question36 = {
     title: 'Tác giả của bộ Thượng Kinh ký sự, nhà y học lỗi lạc của Việt Nam thế kỷ XVIII là ai',
-    main: 'art', 
+    major: 'art', 
     level: 5,
     answers : [
         {
@@ -889,7 +889,7 @@ var question36 = {
 }
 var question37 = {
     title: 'Nhạc sĩ Việt Nam đầu tiên viết opera',
-    main: 'art', 
+    major: 'art', 
     level: 5,
     answers : [
         {
@@ -912,7 +912,7 @@ var question37 = {
 }
 var question38 = {
     title: 'Ai là người phát minh ra internet',
-    main: 'science', 
+    major: 'science', 
     level: 5,
     answers : [
         {
@@ -935,7 +935,7 @@ var question38 = {
 }
 var question39 = {
     title: 'Tác giả của thuyết tương đối Einstein là người nước nào',
-    main: 'science', 
+    major: 'science', 
     level: 2,
     answers : [
         {
