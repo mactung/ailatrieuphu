@@ -89,12 +89,12 @@ function submitAnswer() {
     if (isSubmit === false){
         isChecked = true;
         if (indexChecked === -1){
-        alert("bạn chưa trả lời")
-        isChecked = false;
+            alert("bạn chưa trả lời")
+            isChecked = false;
         }else {
             checkAnswer();
+            isSubmit = true;
         }
-        isSubmit = true;
     }
     
 }

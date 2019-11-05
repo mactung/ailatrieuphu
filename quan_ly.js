@@ -1,15 +1,17 @@
 
 // Hiển thị danh sách câu hỏi
+
 var pageLength = Math.ceil(questions.length / 10) ; // lấy  số trang nếu mỗi trang có 10 câu
 var indexPage = 1; 
+var copyQuestions = questions;
 // Hiển thị index page và LIst Question  
 displayListIndexPage();
-displayListQuestion();
+displayListQuestion(copyQuestions);
 
 // gắn số trang đc chọn 
 function pageNumber(index) {
     indexPage = index;
-    displayListQuestion();
+    displayListQuestion(copyQuestions);
     displayListIndexPage();
     
 }
@@ -25,39 +27,39 @@ function displayListIndexPage() {
 }
 
 // Cách hiển thị list question
-function displayListQuestion() {
+function displayListQuestion(arrayQuestions) {
     let list =`<tr> <td style="text-align: center;">STT</td><td style="text-align: center;">Title câu hỏi</td><td colspan="2" style="text-align: center;">Chức năng</td></tr>`;
     
-    if (questions.length > indexPage * 10){
+    if (arrayQuestions.length > indexPage * 10){
         for ( i = (indexPage * 10) - 10 ; i < (indexPage * 10) ;i++){
             if ( i% 2 === 0){
                 list += `<tr class="hang-chan">
                     <td>${i+1}</td>
-                    <td class="title" ><span  onmousemove="tooltipShow(${i});" onmouseout="tooltipOff(${i});" >${questions[i].title}</span><div class="pop-up" id="tool-tip-${i}"></div></td> 
+                    <td class="title" ><span  onmousemove="tooltipShow(${i});" onmouseout="tooltipOff(${i});" >${arrayQuestions[i].title}</span><div class="pop-up" id="tool-tip-${i}"></div></td> 
                     <td><button  id="edit" class="btn btn-primary" onclick="editQuestion(${i});">Sửa</button></td><td> <button class="btn btn-danger" onclick="deleteQuestion(${i});">Xóa</button></td>
                 </tr>`;
     
             }else {
                 list += `<tr class="hang-le">
                 <td>${i+1}</td>
-                <td class="title"><span onmousemove="tooltipShow(${i});" onmouseout="tooltipOff(${i});" >${questions[i].title}</span><div class="pop-up" id="tool-tip-${i}"></div></td> 
+                <td class="title"><span onmousemove="tooltipShow(${i});" onmouseout="tooltipOff(${i});" >${arrayQuestions[i].title}</span><div class="pop-up" id="tool-tip-${i}"></div></td> 
                 <td><button id="edit" class="btn btn-primary" onclick="editQuestion(${i});">Sửa</button></td><td> <button class="btn btn-danger" onclick="deleteQuestion(${i});">Xóa</button></td>
             </tr>`;
             }
         }
     }else{
-        for ( i = (indexPage * 10) - 10 ; i < questions.length ;i++){
+        for ( i = (indexPage * 10) - 10 ; i < arrayQuestions.length ;i++){
             if ( i% 2 === 0){
                 list += `<tr class="hang-chan">
                     <td>${i+1}</td>
-                    <td class="title" ><span  onmousemove="tooltipShow(${i});" onmouseout="tooltipOff(${i});" >${questions[i].title}</span><div class="pop-up" id="tool-tip-${i}"></div></td> 
+                    <td class="title" ><span  onmousemove="tooltipShow(${i});" onmouseout="tooltipOff(${i});" >${arrayQuestions[i].title}</span><div class="pop-up" id="tool-tip-${i}"></div></td> 
                     <td><button id="edit" class="btn btn-primary" onclick="editQuestion(${i});">Sửa</button></td><td> <button class="btn btn-danger" onclick="deleteQuestion(${i});">Xóa</button></td>
                 </tr>`;
     
             }else {
                 list += `<tr class="hang-le">
                 <td>${i+1}</td>
-                <td class="title"><span onmousemove="tooltipShow(${i});" onmouseout="tooltipOff(${i});" >${questions[i].title}</span><div class="pop-up" id="tool-tip-${i}"></div></td> 
+                <td class="title"><span onmousemove="tooltipShow(${i});" onmouseout="tooltipOff(${i});" >${arrayQuestions[i].title}</span><div class="pop-up" id="tool-tip-${i}"></div></td> 
                 <td><button id="edit" class="btn btn-primary" onclick="editQuestion(${i});">Sửa</button></td><td> <button class="btn btn-danger" onclick="deleteQuestion(${i});">Xóa</button></td>
             </tr>`;
             }
@@ -81,7 +83,12 @@ function editQuestion(index) {
 // Xóa câu hỏi
 function deleteQuestion(index) {
     questions.splice(index,1);
-    displayListQuestion();
+    if ( isLevelChecked = true){
+        filterLevel();
+    }else{
+        displayListQuestion(questions);
+    }
+    
     
 }
 // Thêm câu hỏi
@@ -95,7 +102,7 @@ function submitEdit() {
     }
     document.getElementById("pop-up-edit-question").style.display = "none";
 
-    displayListQuestion();
+    displayListQuestion(copyQuestions);
 }
 //Show popUP add câu hỏi
 function addQuestion() {
@@ -167,3 +174,25 @@ function tooltipOff(index) {
         }
     }
 }
+// Filter câu hỏi
+var isLevelChecked = false;
+function filterLevel() {
+    isLevelChecked = true;
+    let indexLevelChecked = Number(document.getElementById("select-level").value);
+    let copy = questions;
+    let pushlist = [];
+
+    if ( indexLevelChecked === 0){
+        copyQuestions = questions;
+        displayListQuestion(copyQuestions);
+    }else {
+        for(let i = 0; i < copy.length; i++){
+            if(copy[i].level === indexLevelChecked){
+                pushlist.push(copy[i]);
+            }
+        }
+        copyQuestions = pushlist;
+        displayListQuestion(copyQuestions);
+    }
+
+    }

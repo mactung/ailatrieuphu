@@ -15,7 +15,7 @@
     <div id="menu-bar">
         <div id="menu-title">Menu</div>
         <ul>
-            <li  onclick="displayListQuestion(); ">Câu hỏi</li>
+            <li  onclick="displayListQuestion(questions); ">Câu hỏi</li>
             <li >Lĩnh vực</li>
         </ul>
     </div>
@@ -25,6 +25,15 @@
             <button onclick="addQuestion();">Thêm câu hỏi</button>
             <button>Sắp xếp</button>
             <input type="text">
+            <select name="" id="select-level" onchange="filterLevel();">
+                <option select="selected" value="0">Chọn level</option>
+                <option value="1">Level 1</option>
+                <option value="2">Level 2</option>
+                <option value="3">Level 3</option>
+                <option value="4">Level 4</option>
+                <option value="5">Level 5</option>
+                <option value="6">Level 6</option>
+            </select>
         </div>
         <div id="content">
             <table id="questions">
