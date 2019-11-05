@@ -1,0 +1,122 @@
+html,body {
+    margin:0;
+    height: 100%;
+    background-image: linear-gradient(#102693, #3366FF);
+
+}
+#header {
+    height : 10%;
+    background-color: blue;
+}
+#menu-bar{
+    width: 20%;
+    height: 85%;
+    background-color: #F5F5F5;
+    font-size: 20px;
+    float: left;
+    /* background-image: radial-gradient( #3366FF,#102693); */
+    border: 3px solid #F9CA3B;
+    border-radius: 20px;
+    padding: 10px;
+    margin: 10px;
+}
+
+#menu-title{
+    text-align: center;
+}
+
+#main{
+    float: left;
+    background-color: white;
+    box-shadow: #599ABF;
+    border-radius: 20px;
+    width: 75%;
+    height: 85%;
+    font-size: 20px;
+    background-color: whitesmoke;
+    margin: 10px;
+    padding: 10px;
+}
+#content{
+    height: 85%;
+    overflow: scroll;
+}
+
+#pop-up-add-question{
+    display: none;
+    width: 500px;
+    /* height: 500px; */
+    padding: 20px;
+    position: absolute;
+    top : 20%;
+    left: calc(50% - 200px);
+}
+#pop-up-edit-question{
+    display: none;
+    width: 500px;
+    /* height: 500px; */
+    padding: 20px;
+    position: absolute;
+    top : 20%;
+    left: calc(50% - 200px);
+}
+ul li{
+    border-bottom: 1px solid black;
+    padding: 5px;
+}
+ul li:hover{
+    cursor: pointer;
+}
+ul{
+    list-style-type: none;
+    margin: 0;
+}
+.pop-up{
+    width: 600px;
+    visibility: hidden;
+    position: absolute;
+    /* top: 100%; */
+    border: 3px solid #F9CA3B;
+    border-radius: 20px;
+    z-index: 1;
+    background-color: #FFFFFF;
+    padding: 10px;
+    box-shadow: 5px 10px 18px #888888;
+}
+.pop-up:hover {
+    cursor:pointer;
+}
+.hang-chan{
+    background-color: #F6F6F6;
+}
+.hang-le{
+    background-color: white;
+}
+
+td {
+    padding: 6px;
+}
+td:hover {
+    cursor: pointer;
+    color : #B76B27;
+}
+#list-index-page{
+    text-align: center;
+}
+.index-page{
+    padding: 10px;
+    display: inline-block;
+
+}
+.index-page:hover{
+    cursor: pointer;
+    background-color: #666;
+}
+/* .active, .btn:hover {
+    background-color: #666;
+    color: white;
+  } */
+table tr .title {
+    width: 85%;
+    overflow: hidden;
+}

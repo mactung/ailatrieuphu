@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Trang quản lí câu hỏi Ai là triệu phú</title>
+    <link rel="stylesheet" href="quan_ly.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" >
+</head>
+<body>
+    <div id="header">
+        <div id="logo"></div>
+    </div>
+    <div id="menu-bar">
+        <div id="menu-title">Menu</div>
+        <ul>
+            <li  onclick="displayListQuestion(); ">Câu hỏi</li>
+            <li >Lĩnh vực</li>
+        </ul>
+    </div>
+
+    <div id="main">
+        <div>
+            <button onclick="addQuestion();">Thêm câu hỏi</button>
+            <button>Sắp xếp</button>
+            <input type="text">
+        </div>
+        <div id="content">
+            <table id="questions">
+
+            </table>
+        </div>
+        <div id="list-index-page">
+            
+        </div>
+
+    </div>
+
+    <div class="alert alert-success" id="pop-up-edit-question" >
+        <div>Nội dung câu hỏi: <input type="text" id="title-question-edit"> </div>
+        <div>Các câu trả lời: <br>
+            <input type="checkbox" name="answer" id="answer-A-correct"> <input type="text" id="answer-edit-0"> <br>
+            <input type="checkbox" name="answer" id="answer-B-correct"> <input type="text" id="answer-edit-1"> <br>
+            <input type="checkbox" name="answer" id="answer-C-correct"> <input type="text" id="answer-edit-2"> <br>
+            <input type="checkbox" name="answer" id="answer-D-correct"> <input type="text" id="answer-edit-3"> <br>
+            <div>Độ khó 
+                <select  id="level-edit" > 
+                    <option value = "1"> Câu 1-5 </option>
+                    <option value = "2"> Câu 6-7 </option>
+                    <option value = "3"> Câu 8-9 </option>
+                    <option value = "4"> Câu 10-11 </option>
+                    <option value = "5"> Câu 11-12 </option>
+                    <option value = "6"> Câu 14-15 </option>
+                </select>
+            </div>
+            <div>Lĩnh vực
+                <select id="major-edit">
+                    <option value="sport"> Thể thao </option>
+                    <option value="science"> Khoa học </option>
+                    <option value="art"> Nghệ thuật </option>
+                    <option value="life"> Đời sống </option>
+                </select>
+            </div>
+        </div>
+            <button id="submit" onclick="submitEdit();">Submit</button>
+    </div>
+    <div class="alert alert-primary" id="pop-up-add-question" >
+        <div>Nội dung câu hỏi: <input type="text" id="title-question-add"> </div>
+        <div>Các câu trả lời: <br>
+            <input type="checkbox" name="answer" > <input type="text" id="answer-add-0"> <br>
+            <input type="checkbox" name="answer" > <input type="text" id="answer-add-1"> <br>
+            <input type="checkbox" name="answer" > <input type="text" id="answer-add-2"> <br>
+            <input type="checkbox" name="answer" > <input type="text" id="answer-add-3"> <br>
+            <div>Độ khó 
+                <select name="level" id="level-add" > 
+                    <option value = "1"> Câu 1-5 </option>
+                    <option value = "2"> Câu 6-7 </option>
+                    <option value = "3"> Câu 8-9 </option>
+                    <option value = "4"> Câu 10-11 </option>
+                    <option value = "5"> Câu 11-12 </option>
+                    <option value = "6"> Câu 14-15 </option>
+                </select>
+            </div>
+            <div>Lĩnh vực
+                <select id="major-add">
+                    <option value="sport"> Thể thao </option>
+                    <option value="science"> Khoa học </option>
+                    <option value="art"> Nghệ thuật </option>
+                    <option value="life"> Đời sống </option>
+                </select>
+            </div>
+        </div>
+            <button id="submit" onclick="submitAdd();">Submit</button>
+    </div>
+
+
+    <script src="question.js"></script>
+    <script src="quan_ly.js"></script>
+</body>
+</html>
