@@ -64,20 +64,48 @@ function displayListQuestion(arrayQuestions) {
 
 // Sửa câu hỏi
 var indexQuestion = null;
+var indexRight = null;
 function editQuestion(idReturn) {
     indexQuestion = questions.findIndex(x => x.ID === idReturn);
     console.log(indexQuestion);
-    
     document.getElementById("pop-up-edit-question").style.display = "block";
+    
     
     document.getElementById("title-question-edit").value = questions[indexQuestion].title;
     document.getElementById("level-edit").value = questions[indexQuestion].level;
     document.getElementById("major-edit").value = questions[indexQuestion].major;
+    // document.getElementById("right-answer-edit").value = questions[indexQuestion].rightAnswer;
     for (i = 0 ; i < 4 ; i++){
         document.getElementById(`answer-edit-${i}`).value = questions[indexQuestion].answers[i].content;
+        if (questions[indexQuestion].answers[i].isRight === true){
+            document.getElementById("right-answer-edit").value = i;
+
+        }
     }
 }
 
+// Thêm câu hỏi
+function submitEdit() {
+    // let question = {};
+    
+    questions[indexQuestion].title = document.getElementById("title-question-edit").value;
+    questions[indexQuestion].level = Number(document.getElementById("level-edit").value) ;
+    questions[indexQuestion].major = document.getElementById("major-edit").value;
+    // questions[indexQuestion].rightAnswer = document.getElementById("right-answer-edit").value;
+    indexRight = Number(document.getElementById("right-answer-edit").value)
+    for (i = 0 ; i < 4 ; i++){
+        copyQuestions[indexQuestion].answers[i].content = document.getElementById(`answer-edit-${i}`).value ;
+        if (indexRight === i ){
+            questions[indexQuestion].answers[i].isRight = true;
+        }else {
+            questions[indexQuestion].answers[i].isRight = false;
+        }
+    }
+    document.getElementById("pop-up-edit-question").style.display = "none";
+
+    filter();
+       
+}
 // Xóa câu hỏi
 
 function deleteQuestion(idReturn) {
@@ -91,20 +119,6 @@ function deleteQuestion(idReturn) {
 
   
 }
-// Thêm câu hỏi
-function submitEdit() {
-    // let question = {};
-    questions[indexQuestion].title = document.getElementById("title-question-edit").value;
-    questions[indexQuestion].level = Number(document.getElementById("level-edit").value) ;
-    questions[indexQuestion].major = document.getElementById("major-edit").value;
-    for (i = 0 ; i < 4 ; i++){
-        copyQuestions[indexQuestion].answers[i].content = document.getElementById(`answer-edit-${i}`).value ;
-    }
-    document.getElementById("pop-up-edit-question").style.display = "none";
-
-    filter();
-       
-}
 //Show popUP add câu hỏi
 function addQuestion() {
     document.getElementById("pop-up-add-question").style.display = "block";
@@ -116,6 +130,7 @@ function submitAdd() {
         title : "",
         major: '', 
         level: 0,
+        rightAnswer: "",
         answers : [
             {
                 content:'',
@@ -138,8 +153,15 @@ function submitAdd() {
     addQuestion.title = document.getElementById("title-question-add").value;
     addQuestion.level = Number(document.getElementById("level-add").value);
     addQuestion.major = document.getElementById("major-add").value;
+    indexRight = Number(document.getElementById("right-answer-add").value);
+    
     for (i = 0 ; i < 4 ; i++){
         addQuestion.answers[i].content = document.getElementById(`answer-add-${i}`).value ;
+        if (indexRight === i ){
+            addQuestion.answers[i].isRight = true;
+        }else {
+            addQuestion.answers[i].isRight = false;
+        }
     }
     questions.unshift(addQuestion);
 
@@ -148,7 +170,7 @@ function submitAdd() {
     filter();
 }
 // Hiển thị toolTIP
-var indexRight = null;
+
 var answerAlphabet =["A","B","C","D"];
 function tooltipShow(index) {
     for ( i = 0; i <copyQuestions.length;i++){
@@ -176,28 +198,8 @@ function tooltipOff(index) {
     }
 }
 // Filter câu hỏi
-var isLevelChecked = false;
-// function filterLevel() {
-    //     isLevelChecked = true;
-    //     indexLevelChecked = Number(document.getElementById("select-level").value);
-    //     // let copy = questions;
-    //     let pushList = [];
-    
-    
-    //     if ( indexLevelChecked === 0){
-        //         pageNumber(1);
-        //         copyQuestions = questions;
-        //         displayListQuestion(copyQuestions);
-        
-        //     }else {
-            //         pageNumber(1);
-            //         // console.log(questions);
-            //         copyQuestions = questions.filter(question => question.level === indexLevelChecked);
-            //         displayListQuestion(copyQuestions);
-            
-            //     }
-            
-            // }
+// var isLevelChecked = false;
+
 var indexLevelChecked = 0;
 var indexMajorChecked ='none'
 function filter() {
@@ -244,32 +246,5 @@ function filter() {
 
     
 }
-// function filterMajor() {
-//     indexMajorChecked = document.getElementById("select-major").value;
-//     let pushList = [];
-//     let copy = copyQuestions;
 
-    
-//     if ( indexMajorChecked === 'none'){
-//         pageNumber(1);
-//         copyQuestions = questions;
-//         displayListQuestion(copyQuestions);
-
-//     }else {
-//         pageNumber(1);
-//         // console.log(questions);
-//         console.log(indexMajorChecked);
-        
-//         for(let i = 0; i < questions.length; i++){
-//             if(questions[i].major === indexMajorChecked){
-//                 pushList.push(questions[i]);
-//             }
-//         }
-//         copyQuestions = pushList;
-//         console.log(copyQuestions);
-//         displayListQuestion(copyQuestions);
-//     }
-
-    
-// }
 

@@ -56,10 +56,20 @@
     <div class="alert alert-success" id="pop-up-edit-question" >
         <div>Nội dung câu hỏi: <input type="text" id="title-question-edit"> </div>
         <div>Các câu trả lời: <br>
-            <input type="checkbox" name="answer" id="answer-A-correct"> <input type="text" id="answer-edit-0"> <br>
-            <input type="checkbox" name="answer" id="answer-B-correct"> <input type="text" id="answer-edit-1"> <br>
-            <input type="checkbox" name="answer" id="answer-C-correct"> <input type="text" id="answer-edit-2"> <br>
-            <input type="checkbox" name="answer" id="answer-D-correct"> <input type="text" id="answer-edit-3"> <br>
+            <input type="text" id="answer-edit-0"> <br>
+            <input type="text" id="answer-edit-1"> <br>
+            <input type="text" id="answer-edit-2"> <br>
+            <input type="text" id="answer-edit-3"> <br>
+            <div>Đáp án Đúng 
+                <select  id="right-answer-edit" > 
+                    <option value = "none"> Chọn đáp án đúng </option>
+                    <option value = "0"> Câu A </option>
+                    <option value = "1"> Câu B </option>
+                    <option value = "2"> Câu C </option>
+                    <option value = "3"> Câu D </option>
+
+                </select>
+            </div>
             <div>Độ khó 
                 <select  id="level-edit" > 
                     <option value = "1"> Câu 1-5 </option>
@@ -84,10 +94,20 @@
     <div class="alert alert-primary" id="pop-up-add-question" >
         <div>Nội dung câu hỏi: <input type="text" id="title-question-add"> </div>
         <div>Các câu trả lời: <br>
-            <input type="checkbox" name="answer" > <input type="text" id="answer-add-0"> <br>
-            <input type="checkbox" name="answer" > <input type="text" id="answer-add-1"> <br>
-            <input type="checkbox" name="answer" > <input type="text" id="answer-add-2"> <br>
-            <input type="checkbox" name="answer" > <input type="text" id="answer-add-3"> <br>
+            <input type="text" id="answer-add-0"> <br>
+            <input type="text" id="answer-add-1"> <br>
+            <input type="text" id="answer-add-2"> <br>
+            <input type="text" id="answer-add-3"> <br>
+            <div>Đáp án Đúng 
+                <select  id="right-answer-add" > 
+                    <option value = "none"> Chọn đáp án đúng </option>
+                    <option value = "0"> Câu A </option>
+                    <option value = "1"> Câu B </option>
+                    <option value = "2"> Câu C </option>
+                    <option value = "3"> Câu C </option>
+
+                </select>
+            </div>
             <div>Độ khó 
                 <select name="level" id="level-add" > 
                     <option value = "1"> Câu 1-5 </option>

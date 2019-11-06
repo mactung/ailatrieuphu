@@ -4,6 +4,7 @@ var questions = [{
     "title": "Vua bóng đá Pelé đã ghi được bao nhiêu bàn thắng trong toàn bộ sự nghiệp của mình?",
 	"major": "sport",
 	"level": 4,
+	"rightAnswer" : "b",
 	"answers": [{
 		"content": "1192",
 		"isRight": false
@@ -26,6 +27,7 @@ var questions = [{
 	"title": "Giải vô địch bóng đá thế giới(FIFA World Cup) lần đầu tiên được tổ chức ở đâu?",
 	"major": "sport",
 	"level": 6,
+	"rightAnswer" : "d",
 	"answers": [{
 		"content": "Italia",
 		"isRight": false
@@ -48,6 +50,7 @@ var questions = [{
 	"title": "Môn võ nào được gọi là Hiệp Khí Đạo?",
 	"major": "sport",
 	"level": 3,
+	"rightAnswer" : "c",
 	"answers": [{
 		"content": "Judo",
 		"isRight": false
@@ -70,6 +73,7 @@ var questions = [{
 	"title": "Đội tuyển nào nắm giữ kỉ lục về số lần vô địch FIFA World Cup (5 lần)?",
 	"major": "sport",
 	"level": 3,
+	"rightAnswer" : "b",
 	"answers": [{
 		"content": "Italia",
 		"isRight": false
@@ -92,6 +96,7 @@ var questions = [{
 	"title": "Môn võ nào sau đây bắt nguồn từ Hàn Quốc",
 	"major": "sport",
 	"level": 2,
+	"rightAnswer" : "d",
 	"answers": [{
 		"content": "Karatedo",
 		"isRight": false
@@ -114,6 +119,7 @@ var questions = [{
 	"title": "Đội bóng nào là nhà vô địch AFF Suzuki Cup 2018",
 	"major": "sport",
 	"level": 1,
+	"rightAnswer" : "a",
 	"answers": [{
 		"content": "Việt Nam",
 		"isRight": true
@@ -136,6 +142,7 @@ var questions = [{
 	"title": "Trong lịch sử World Cup, có bao nhiệu đội bóng vô địch với tư cách là đội chủ nhà?",
 	"major": "sport",
 	"level": 4,
+	"rightAnswer" : "d",
 	"answers": [{
 		"content": "3",
 		"isRight": false
@@ -158,6 +165,7 @@ var questions = [{
 	"title": "Lance Amstrong đã vô địch giải đua xe đạp vòng quanh nước Pháp (Tour de France) bao nhiêu lần?",
 	"major": "sport",
 	"level": 3,
+	"rightAnswer" : "c",
 	"answers": [{
 		"content": "4",
 		"isRight": false
@@ -180,6 +188,7 @@ var questions = [{
 	"title": "Nhà vô địch của FIFA World Cup 2018 là đội tuyển nào?",
 	"major": "sport",
 	"level": 2,
+	"rightAnswer" : "d",
 	"answers": [{
 		"content": "Tây Ban Nha",
 		"isRight": false
@@ -202,6 +211,7 @@ var questions = [{
 	"title": "Huấn luyện viên José Mourinho giành chức vô địch Champions League lần đầu tiên cùng câu lạc bộ nào?",
 	"major": "sport",
 	"level": 6,
+	"rightAnswer" : "a",
 	"answers": [{
 		"content": "Porto",
 		"isRight": true
@@ -224,6 +234,7 @@ var questions = [{
 	"title": "Câu lạc bộ Juventus có biệt danh là gì?",
 	"major": "sport",
 	"level": 4,
+	"rightAnswer" : "a",
 	"answers": [{
 		"content": "Bà đầm già thành Turin",
 		"isRight": true
@@ -246,6 +257,7 @@ var questions = [{
 	"title": "Ai là người vô địch FIFA World Cup trên cả cương vị cầu thủ lẫn huẩn luyện viên?",
 	"major": "sport",
 	"level": 5,
+	"rightAnswer" : "b",
 	"answers": [{
 		"content": "Paolo Madini",
 		"isRight": false
@@ -268,6 +280,7 @@ var questions = [{
 	"title": "Một trận thi đấu bóng đá có bao nhiêu hiệp chính?",
 	"major": "sport",
 	"level": 5,
+	"rightAnswer" : "b",
 	"answers": [{
 		"content": "1",
 		"isRight": false
@@ -290,6 +303,7 @@ var questions = [{
 	"title": "Môn thể thao nào vật động viên không được đi giày để thi đấu?",
 	"major": "sport",
 	"level": 2,
+	"rightAnswer" : "d",
 	"answers": [{
 		"content": "Bóng đá",
 		"isRight": false
@@ -312,6 +326,7 @@ var questions = [{
 	"title": "Tại thế vận hội Bắc Kinh 2008, kình ngư Micheal Phelps đã giành được bao nhiêu huy chương?",
 	"major": "sport",
 	"level": 5,
+	"rightAnswer" : "c",
 	"answers": [{
 		"content": "7",
 		"isRight": false
@@ -334,6 +349,7 @@ var questions = [{
 	"title": "Ai là người nắm giữ kỉ lục thế giới nội dung 100m nam ở bộ môn điền kinh?",
 	"major": "sport",
 	"level": 6,
+	"rightAnswer" : "a",
 	"answers": [{
 		"content": "Usain Bolt",
 		"isRight": true
@@ -356,6 +372,7 @@ var questions = [{
 	"title": "Zizou là biệt danh của cầu thủ nào?",
 	"major": "sport",
 	"level": 2,
+	"rightAnswer" : "d",
 	"answers": [{
 		"content": "Ronaldo",
 		"isRight": false
@@ -378,6 +395,7 @@ var questions = [{
 	"title": "Nhà vô địch đầu tiên của FIFA World Cup là đội tuyển nào?",
 	"major": "sport",
 	"level": 3,
+	"rightAnswer" : "b",
 	"answers": [{
 		"content": "Brazil",
 		"isRight": false
@@ -400,6 +418,7 @@ var questions = [{
 	"title": "Bóng bàn bắt nguồn từ quốc gia nào",
 	"major": "sport",
 	"level": 3,
+	"rightAnswer" : "d",
 	"answers": [{
 		"content": "Trung Quốc",
 		"isRight": false
@@ -422,6 +441,7 @@ var questions = [{
 	"title": "Giải đua xe đạp vòng quanh nước Pháp (Tour de France) lần đầu tiên được tổ chức vào năm nào?",
 	"major": "sport",
 	"level": 5,
+	"rightAnswer" : "b",
 	"answers": [{
 		"content": "1912",
 		"isRight": false
@@ -444,6 +464,7 @@ var questions = [{
 	"title": "Mạnh vì..., bạo vì tiền",
 	"major": "life",
 	"level": 6,
+	"rightAnswer" : "a",
 	"answers": [{
 		"content": "Gạo",
 		"isRight": true
@@ -466,6 +487,7 @@ var questions = [{
 	"title": "Monday trong tiếng Anh là thứ mấy trong tuần",
 	"major": "life",
 	"level": 1,
+	"rightAnswer" : "a",
 	"answers": [{
 		"content": "Thứ hai",
 		"isRight": true
@@ -488,6 +510,7 @@ var questions = [{
 	"title": "Người đẹp vì lụa, ... tốt vì phân",
 	"major": "life",
 	"level": 1,
+	"rightAnswer" : "a",
 	"answers": [{
 		"content": "Lúa",
 		"isRight": true
@@ -510,6 +533,7 @@ var questions = [{
 	"title": "Khả năng đặc biệt có thể làm cho người khác bị mê gọi là",
 	"major": "life",
 	"level": 1,
+	"rightAnswer" : "a",
 	"answers": [{
 		"content": "Thôi miên",
 		"isRight": true
@@ -532,6 +556,7 @@ var questions = [{
 	"title": "Ngọn núi nào cao nhất Nhật Bản",
 	"major": "life",
 	"level": 1,
+	"rightAnswer" : "a",
 	"answers": [{
 		"content": "Fuji",
 		"isRight": true
@@ -554,6 +579,7 @@ var questions = [{
 	"title": "Loại vật liệu dùng trong sản xuất thủy tinh",
 	"major": "science",
 	"level": 1,
+	"rightAnswer" : "a",
 	"answers": [{
 		"content": "Cát trắng",
 		"isRight": true
@@ -576,6 +602,7 @@ var questions = [{
 	"title": "Tim người gồm bao nhiêu ngăn?",
 	"major": "science",
 	"level": 1,
+	"rightAnswer" : "a",
 	"answers": [{
 		"content": "4",
 		"isRight": true
@@ -598,6 +625,7 @@ var questions = [{
 	"title": "Fe là tên nguyên tố hóa học của",
 	"major": "science",
 	"level": 1,
+	"rightAnswer" : "a",
 	"answers": [{
 		"content": "Sắt",
 		"isRight": true
@@ -620,6 +648,7 @@ var questions = [{
 	"title": "Hiện tượng chất lỏng chuyển thành dạng hơi",
 	"major": "science",
 	"level": 1,
+	"rightAnswer" : "a",
 	"answers": [{
 		"content": "Bốc hơi",
 		"isRight": true
@@ -642,6 +671,7 @@ var questions = [{
 	"title": "Bài hát mang tên Lạc Trôi do ai sáng tác",
 	"major": "art",
 	"level": 1,
+	"rightAnswer" : "a",
 	"answers": [{
 		"content": "Sơn Tùng MTP",
 		"isRight": true
@@ -664,6 +694,7 @@ var questions = [{
 	"title": "Chú chó trong tác phẩm Lão Hạc mang tên",
 	"major": "art",
 	"level": 1,
+	"rightAnswer" : "a",
 	"answers": [{
 		"content": "Cậu vàng",
 		"isRight": true
@@ -686,6 +717,7 @@ var questions = [{
 	"title": "Người em của Thúy Kiều trong tác phẩm Truyện Kiều tên là",
 	"major": "art",
 	"level": 1,
+	"rightAnswer" : "a",
 	"answers": [{
 		"content": "Thúy Vân",
 		"isRight": true
@@ -708,6 +740,7 @@ var questions = [{
 	"title": "Trang phục truyền thống của Nhật Bản là",
 	"major": "art",
 	"level": 1,
+	"rightAnswer" : "a",
 	"answers": [{
 		"content": "Kimono",
 		"isRight": true
@@ -730,6 +763,7 @@ var questions = [{
 	"title": "Ai là người đứng đầu ngành châm cứu ở Việt Nam",
 	"major": "life",
 	"level": 5,
+	"rightAnswer" : "a",
 	"answers": [{
 		"content": "Nguyễn Tài Thu",
 		"isRight": true
@@ -752,6 +786,7 @@ var questions = [{
 	"title": "Thành phố nào là trung tâm của cách mạng tháng 10 Nga",
 	"major": "life",
 	"level": 5,
+	"rightAnswer" : "a",
 	"answers": [{
 		"content": "Saint Peterburg",
 		"isRight": true
@@ -774,6 +809,7 @@ var questions = [{
 	"title": "Tác giả của bộ Thượng Kinh ký sự, nhà y học lỗi lạc của Việt Nam thế kỷ XVIII là ai",
 	"major": "art",
 	"level": 5,
+	"rightAnswer" : "a",
 	"answers": [{
 		"content": "Lê Hữu Trác",
 		"isRight": true
@@ -796,6 +832,7 @@ var questions = [{
 	"title": "Nhạc sĩ Việt Nam đầu tiên viết opera",
 	"major": "art",
 	"level": 5,
+	"rightAnswer" : "a",
 	"answers": [{
 		"content": "Đỗ Nhuận",
 		"isRight": true
@@ -818,6 +855,7 @@ var questions = [{
 	"title": "Ai là người phát minh ra internet",
 	"major": "science",
 	"level": 5,
+	"rightAnswer" : "a",
 	"answers": [{
 		"content": "Paul Baran",
 		"isRight": true
@@ -840,6 +878,7 @@ var questions = [{
 	"title": "Tác giả của thuyết tương đối Einstein là người nước nào",
 	"major": "science",
 	"level": 2,
+	"rightAnswer" : "a",
 	"answers": [{
 		"content": "Đức",
 		"isRight": true

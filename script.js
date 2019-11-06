@@ -215,7 +215,7 @@ function displayAskProfessor() {
 function askProfessor(indexProfes) {
     checkIndexProfes(indexProfes);
     let indexRandomProfes = null;
-    if ( selectedQuestions[indexQuestion].main === indexProfessor){
+    if ( selectedQuestions[indexQuestion].major === indexProfessor){
         console.log ( selectedQuestions[indexQuestion].answers[indexRight].content);
         document.getElementById("suggest-answer").innerHTML =  selectedQuestions[indexQuestion].answers[indexRight].content ;
     }else { 
