@@ -1,18 +1,27 @@
 
 // Hiển thị danh sách câu hỏi
-
-var pageLength = Math.ceil(questions.length / 10) ; // lấy  số trang nếu mỗi trang có 10 câu
+// for (i = 0 ; i < questions.length; i++){
+//     questions[i].ID = i+1;
+// }
+// // console.log(questions);
+// let stringQuestion = JSON.stringify(questions);
+// // document.getElementById("string").innerHTML = stringQuestion;
+// console.log(stringQuestion);
+var IDQuestion = null;
+var pageLength = 0;
+function getLenghtPage(arrayQuestions) {
+    pageLength = Math.ceil(arrayQuestions.length / 10) ; // lấy  số trang nếu mỗi trang có 10 câu
+    displayListIndexPage();
+}
 var indexPage = 1; 
 var copyQuestions = questions;
-// Hiển thị index page và LIst Question  
-displayListIndexPage();
-displayListQuestion(copyQuestions);
+// Hiển thị index page và LIst Question
+displayListQuestion(questions);
 
 // gắn số trang đc chọn 
 function pageNumber(index) {
     indexPage = index;
     displayListQuestion(copyQuestions);
-    displayListIndexPage();
     
 }
 /// hiển thị số trang
@@ -22,47 +31,32 @@ function displayListIndexPage() {
         list += `<div class="index-page" id="page-${i+1}"  onclick="pageNumber(${i+1})">${i+1}</div>`;
     }
     document.getElementById("list-index-page").innerHTML = list;
-    document.getElementById(`page-${indexPage}`).style.backgroundColor = "#666";
+    // document.getElementById(`page-${indexPage}`).style.backgroundColor = "#666";
     
 }
 
 // Cách hiển thị list question
 function displayListQuestion(arrayQuestions) {
+    getLenghtPage(arrayQuestions);
+    
     let list =`<tr> <td style="text-align: center;">STT</td><td style="text-align: center;">Title câu hỏi</td><td colspan="2" style="text-align: center;">Chức năng</td></tr>`;
     
     if (arrayQuestions.length > indexPage * 10){
         for ( i = (indexPage * 10) - 10 ; i < (indexPage * 10) ;i++){
-            if ( i% 2 === 0){
-                list += `<tr class="hang-chan">
-                    <td>${i+1}</td>
-                    <td class="title" ><span  onmousemove="tooltipShow(${i});" onmouseout="tooltipOff(${i});" >${arrayQuestions[i].title}</span><div class="pop-up" id="tool-tip-${i}"></div></td> 
-                    <td><button  id="edit" class="btn btn-primary" onclick="editQuestion(${i});">Sửa</button></td><td> <button class="btn btn-danger" onclick="deleteQuestion(${i});">Xóa</button></td>
-                </tr>`;
-    
-            }else {
-                list += `<tr class="hang-le">
+            list += `<tr>
                 <td>${i+1}</td>
-                <td class="title"><span onmousemove="tooltipShow(${i});" onmouseout="tooltipOff(${i});" >${arrayQuestions[i].title}</span><div class="pop-up" id="tool-tip-${i}"></div></td> 
-                <td><button id="edit" class="btn btn-primary" onclick="editQuestion(${i});">Sửa</button></td><td> <button class="btn btn-danger" onclick="deleteQuestion(${i});">Xóa</button></td>
-            </tr>`;
-            }
+                <td class="title" ><span  onmousemove="tooltipShow(${i});" onmouseout="tooltipOff(${i});" >${arrayQuestions[i].title}</span><div class="pop-up" id="tool-tip-${i}"></div></td> 
+                <td><button  id="edit" class="btn btn-primary" onclick="editQuestion(${copyQuestions[i].ID});">Sửa</button></td><td> <button class="btn btn-danger" onclick="deleteQuestion(${copyQuestions[i].ID});">Xóa</button></td>
+                </tr>`;
         }
     }else{
         for ( i = (indexPage * 10) - 10 ; i < arrayQuestions.length ;i++){
-            if ( i% 2 === 0){
-                list += `<tr class="hang-chan">
-                    <td>${i+1}</td>
-                    <td class="title" ><span  onmousemove="tooltipShow(${i});" onmouseout="tooltipOff(${i});" >${arrayQuestions[i].title}</span><div class="pop-up" id="tool-tip-${i}"></div></td> 
-                    <td><button id="edit" class="btn btn-primary" onclick="editQuestion(${i});">Sửa</button></td><td> <button class="btn btn-danger" onclick="deleteQuestion(${i});">Xóa</button></td>
-                </tr>`;
-    
-            }else {
-                list += `<tr class="hang-le">
-                <td>${i+1}</td>
-                <td class="title"><span onmousemove="tooltipShow(${i});" onmouseout="tooltipOff(${i});" >${arrayQuestions[i].title}</span><div class="pop-up" id="tool-tip-${i}"></div></td> 
-                <td><button id="edit" class="btn btn-primary" onclick="editQuestion(${i});">Sửa</button></td><td> <button class="btn btn-danger" onclick="deleteQuestion(${i});">Xóa</button></td>
+            list += `<tr>
+            <td>${i+1}</td>
+            <td class="title" ><span  onmousemove="tooltipShow(${i});" onmouseout="tooltipOff(${i});" >${arrayQuestions[i].title}</span><div class="pop-up" id="tool-tip-${i}"></div></td> 
+            <td><button  id="edit" class="btn btn-primary" onclick="editQuestion(${copyQuestions[i].ID});">Sửa</button></td><td> <button class="btn btn-danger" onclick="deleteQuestion(${copyQuestions[i].ID});">Xóa</button></td>
             </tr>`;
-            }
+
         }
     }
     document.getElementById("questions").innerHTML = list;
@@ -70,9 +64,12 @@ function displayListQuestion(arrayQuestions) {
 
 // Sửa câu hỏi
 var indexQuestion = null;
-function editQuestion(index) {
+function editQuestion(idReturn) {
+    indexQuestion = questions.findIndex(x => x.ID === idReturn);
+    console.log(indexQuestion);
+    
     document.getElementById("pop-up-edit-question").style.display = "block";
-    indexQuestion = index;
+    
     document.getElementById("title-question-edit").value = questions[indexQuestion].title;
     document.getElementById("level-edit").value = questions[indexQuestion].level;
     document.getElementById("major-edit").value = questions[indexQuestion].major;
@@ -80,29 +77,33 @@ function editQuestion(index) {
         document.getElementById(`answer-edit-${i}`).value = questions[indexQuestion].answers[i].content;
     }
 }
+
 // Xóa câu hỏi
-function deleteQuestion(index) {
+
+function deleteQuestion(idReturn) {
+    console.log(copyQuestions);
+    let index = questions.findIndex(x => x.ID === idReturn);
+    console.log(index);
+    
     questions.splice(index,1);
-    if ( isLevelChecked = true){
-        filterLevel();
-    }else{
-        displayListQuestion(questions);
-    }
-    
-    
+    filter();
+
+
+  
 }
 // Thêm câu hỏi
 function submitEdit() {
     // let question = {};
     questions[indexQuestion].title = document.getElementById("title-question-edit").value;
-    questions[indexQuestion].level = document.getElementById("level-edit").value ;
+    questions[indexQuestion].level = Number(document.getElementById("level-edit").value) ;
     questions[indexQuestion].major = document.getElementById("major-edit").value;
     for (i = 0 ; i < 4 ; i++){
-        questions[indexQuestion].answers[i].content = document.getElementById(`answer-edit-${i}`).value ;
+        copyQuestions[indexQuestion].answers[i].content = document.getElementById(`answer-edit-${i}`).value ;
     }
     document.getElementById("pop-up-edit-question").style.display = "none";
 
-    displayListQuestion(copyQuestions);
+    filter();
+       
 }
 //Show popUP add câu hỏi
 function addQuestion() {
@@ -135,33 +136,33 @@ function submitAdd() {
         ]
     };
     addQuestion.title = document.getElementById("title-question-add").value;
-    addQuestion.level = document.getElementById("level-add").value;
+    addQuestion.level = Number(document.getElementById("level-add").value);
     addQuestion.major = document.getElementById("major-add").value;
     for (i = 0 ; i < 4 ; i++){
         addQuestion.answers[i].content = document.getElementById(`answer-add-${i}`).value ;
     }
-    questions.push(addQuestion);
+    questions.unshift(addQuestion);
 
     document.getElementById("pop-up-add-question").style.display = "none";
 
-    displayListQuestion();
+    filter();
 }
 // Hiển thị toolTIP
 var indexRight = null;
 var answerAlphabet =["A","B","C","D"];
 function tooltipShow(index) {
-    for ( i = 0; i <questions.length;i++){
+    for ( i = 0; i <copyQuestions.length;i++){
         if( i === index){
             for(j = 0; j < 4; j++){
-                if( questions[index].answers[j].isRight === true ){
+                if( copyQuestions[index].answers[j].isRight === true ){
                     indexRight = j;
                 }
             }
             document.getElementById(`tool-tip-${i}`).style.visibility = "visible";
             document.getElementById(`tool-tip-${i}`).innerHTML = `
-                <span>Right Answer :${answerAlphabet[indexRight]}: ${questions[index].answers[indexRight].content}</span> <br>
-                <span>Major :  ${questions[index].major}</span> <br>
-                <span>Level :  ${questions[index].level}</span>
+                <span>Right Answer :${answerAlphabet[indexRight]}: ${copyQuestions[index].answers[indexRight].content}</span> <br>
+                <span>Major :  ${copyQuestions[index].major}</span> <br>
+                <span>Level :  ${copyQuestions[index].level}</span>
             `;
         }
     }
@@ -176,23 +177,99 @@ function tooltipOff(index) {
 }
 // Filter câu hỏi
 var isLevelChecked = false;
-function filterLevel() {
-    isLevelChecked = true;
-    let indexLevelChecked = Number(document.getElementById("select-level").value);
-    let copy = questions;
-    let pushlist = [];
+// function filterLevel() {
+    //     isLevelChecked = true;
+    //     indexLevelChecked = Number(document.getElementById("select-level").value);
+    //     // let copy = questions;
+    //     let pushList = [];
+    
+    
+    //     if ( indexLevelChecked === 0){
+        //         pageNumber(1);
+        //         copyQuestions = questions;
+        //         displayListQuestion(copyQuestions);
+        
+        //     }else {
+            //         pageNumber(1);
+            //         // console.log(questions);
+            //         copyQuestions = questions.filter(question => question.level === indexLevelChecked);
+            //         displayListQuestion(copyQuestions);
+            
+            //     }
+            
+            // }
+var indexLevelChecked = 0;
+var indexMajorChecked ='none'
+function filter() {
+    indexMajorChecked = document.getElementById("select-major").value;
+    indexLevelChecked = Number(document.getElementById("select-level").value);
 
-    if ( indexLevelChecked === 0){
+    let pushList = [];
+    let copy = copyQuestions;
+    if ( indexMajorChecked === 'none'){
+        pageNumber(1);
         copyQuestions = questions;
-        displayListQuestion(copyQuestions);
-    }else {
-        for(let i = 0; i < copy.length; i++){
-            if(copy[i].level === indexLevelChecked){
-                pushlist.push(copy[i]);
-            }
+        // displayListQuestion(copyQuestions);
+        if ( indexLevelChecked === 0){
+            pageNumber(1);
+            // copyQuestions = questions;
+            displayListQuestion(copyQuestions);
+    
+        }else {
+            pageNumber(1);
+            // console.log(questions);
+            copyQuestions = copyQuestions.filter(question => question.level === indexLevelChecked);
+            displayListQuestion(copyQuestions);
+            
         }
-        copyQuestions = pushlist;
-        displayListQuestion(copyQuestions);
+
+    }else {
+        pageNumber(1);
+        copyQuestions = questions.filter(question => question.major === indexMajorChecked);
+        // displayListQuestion(copyQuestions);
+        if ( indexLevelChecked === 0){
+            pageNumber(1);
+            // copyQuestions = questions;
+            displayListQuestion(copyQuestions);
+    
+        }else {
+            pageNumber(1);
+            // console.log(questions);
+            copyQuestions = copyQuestions.filter(question => question.level === indexLevelChecked);
+            displayListQuestion(copyQuestions);
+            
+        }
     }
 
-    }
+
+    
+}
+// function filterMajor() {
+//     indexMajorChecked = document.getElementById("select-major").value;
+//     let pushList = [];
+//     let copy = copyQuestions;
+
+    
+//     if ( indexMajorChecked === 'none'){
+//         pageNumber(1);
+//         copyQuestions = questions;
+//         displayListQuestion(copyQuestions);
+
+//     }else {
+//         pageNumber(1);
+//         // console.log(questions);
+//         console.log(indexMajorChecked);
+        
+//         for(let i = 0; i < questions.length; i++){
+//             if(questions[i].major === indexMajorChecked){
+//                 pushList.push(questions[i]);
+//             }
+//         }
+//         copyQuestions = pushList;
+//         console.log(copyQuestions);
+//         displayListQuestion(copyQuestions);
+//     }
+
+    
+// }
+

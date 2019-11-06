@@ -19,7 +19,7 @@ function setLevel(){
 function displayQuestion() {
     if (indexQuestion < 15){
         isSubmit = false;
-        // is5050 = false;
+        is5050 = false;
         isChecked = false;
         checkRightAnswer();
         setLevel();
@@ -159,7 +159,7 @@ function askViewer() {
     document.getElementById("ask-viewer-board-result").style.display ="block";
     let percentAnswer =[0,0,0,0];
     let j = 1;
-    percentAnswer[0] = getRanDomPercent(50, 100);
+    percentAnswer[0] = getRanDomPercent(40, 100);
     // console.log(indexRight);
     document.getElementById(`percent-column-${indexRight}`).style.width = `calc( 2 *${percentAnswer[0]}px)`;
     document.getElementById(`percent-number-${indexRight}`).innerHTML = `${percentAnswer[0]}`;

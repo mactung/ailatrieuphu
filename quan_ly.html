@@ -25,14 +25,21 @@
             <button onclick="addQuestion();">Thêm câu hỏi</button>
             <button>Sắp xếp</button>
             <input type="text">
-            <select name="" id="select-level" onchange="filterLevel();">
-                <option select="selected" value="0">Chọn level</option>
+            <select name="" id="select-level" onchange="filter();"> Chọn Level
+                <option select="selected" value="0">Tất cả Level</option>
                 <option value="1">Level 1</option>
                 <option value="2">Level 2</option>
                 <option value="3">Level 3</option>
                 <option value="4">Level 4</option>
                 <option value="5">Level 5</option>
                 <option value="6">Level 6</option>
+            </select>
+            <select name="" id="select-major" onchange="filter();"> Chọn Level
+                <option select="selected" value="none">Tất cả Major</option>
+                <option value="sport"> Thể thao </option>
+                <option value="science"> Khoa học </option>
+                <option value="art"> Nghệ thuật </option>
+                <option value="life"> Đời sống </option>
             </select>
         </div>
         <div id="content">
@@ -102,7 +109,7 @@
         </div>
             <button id="submit" onclick="submitAdd();">Submit</button>
     </div>
-
+    <div id="string"></div>
 
     <script src="question.js"></script>
     <script src="quan_ly.js"></script>
