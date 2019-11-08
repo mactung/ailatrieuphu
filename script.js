@@ -45,7 +45,8 @@ function displayQuestion() {
 }
 // Start Game 
 
-function startGame() {
+function startGame(e) {
+    e.preventDefault();
     getName();
     selectedQuestions = [];
     chon15cauhoi(questions);
@@ -62,7 +63,7 @@ function startGame() {
 function stopGame() {
     isChecked = true;
     document.getElementById("noti-endgame").style.display = "block";
-    displayMoney(indexQuestion-1);
+    displayMoney(indexQuestion - 1);
 }
 // Chơi lại
 function playAgain() {
@@ -123,7 +124,7 @@ function checkAnswer() {
         for ( i = 0; i < 4; i++){
             if (selectedQuestions[indexQuestion].answers[i].isRight === true ){
                 setTimeout(function(){document.getElementById(`answer-${i}`).classList.add('blink-color');},level *1000);
-                setTimeout(function(){document.getElementById("noti-endgame").style.display = "block";displayMoney(indexQuestion);}, level*1000 + 1000);
+                setTimeout(function(){document.getElementById("noti-endgame").style.display = "block";displayMoney(indexQuestion - 1);}, level*1000 + 1000);
                 break;
             }
         }
@@ -177,14 +178,14 @@ function askViewer() {
     let j = 1;
     percentAnswer[0] = getRanDomPercent(40, 100);
     // console.log(indexRight);
-    document.getElementById(`percent-column-${indexRight}`).style.width = `calc( 2 *${percentAnswer[0]}px)`;
-    document.getElementById(`percent-number-${indexRight}`).innerHTML = `${percentAnswer[0]}`;
+    document.getElementById(`percent-${indexRight}`).style.width = `calc(3 * ${percentAnswer[0]}px)`;
+    document.getElementById(`percent-${indexRight}`).innerHTML = `${percentAnswer[0]}%`;
     if ( is5050 === true){  // Check xem đã sử dung 50-50 chưa
         percentAnswer[1] = 100 - percentAnswer[0]
         for ( i = 0; i < 4; i++){
             if( i != indexRight && i != indexCut1 && i !=indexCut2){ 
-                document.getElementById(`percent-column-${i}`).style.width = `calc( 2 *${percentAnswer[1]}px)` ;
-                document.getElementById(`percent-number-${i}`).innerHTML = `${percentAnswer[1]}`;
+                document.getElementById(`percent-${i}`).style.width = `calc(3 * ${percentAnswer[1]}px)` ;
+                document.getElementById(`percent-${i}`).innerHTML = `${percentAnswer[1]}%`;
             }
         }
     }else {
@@ -194,8 +195,8 @@ function askViewer() {
         
         for ( i = 0; i < 4; i++){
             if( i != indexRight){
-                document.getElementById(`percent-column-${i}`).style.width = `calc( 2 *${percentAnswer[j]}px)`;
-                document.getElementById(`percent-number-${i}`).innerHTML = `${percentAnswer[j]}`;
+                document.getElementById(`percent-${i}`).style.width = `calc(3 * ${percentAnswer[j]}px)`;
+                document.getElementById(`percent-${i}`).innerHTML = `${percentAnswer[j]}%`;
                 j++; 
             }
         }

@@ -7,6 +7,7 @@
     <title>Ai là triệu phú</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+    <!-- <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> -->
 
 </head>
 <body >
@@ -31,32 +32,26 @@
             </div>
             <div id="noti-wingame">
                 <div>Bạn Thắng</div>
+                <button id="play-again-button" onclick="playAgain()">Chơi lại</button>
     
             </div>
             <div id="content">
                 <div id="ask-viewer-board-result">
+                    <div style="border-bottom: 1px dashed black ">
+                        <span>A:</span><div class="progress-bar" id="percent-0"></div>
+                    </div>
+                    <div style="border-bottom: 1px dashed black ">
+                        <span>B:</span><div class="progress-bar" id="percent-1"></div>
+                    </div>
+                    <div style="border-bottom: 1px dashed black ">
+                        <span>C:</span><div class="progress-bar" id="percent-2"></div>
+                    </div>
+                    <div style="border-bottom: 1px dashed black ">
+                        <span>D:</span><div class="progress-bar" id="percent-3"></div>
+                    </div>
     
-                        <div class="percent" >
-                            <p>A</p>
-                            <div class="number"  id="percent-number-0"></div>
-                            <div class="column" id="percent-column-0"></div>
-                        </div>
-                        <div class="percent" > 
-                            <p>B</p>
-                            <div class="number" id="percent-number-1"></div>
-                            <div class="column" id="percent-column-1"></div>
-                        </div>
-                        <div class="percent" >
-                            <p>C</p>
-                            <div  class="number" id="percent-number-2"></div>
-                            <div class="column" id="percent-column-2"></div>
-                        </div>
-                        <div class="percent" >
-                            <p>D</p>
-                            <div class="number"  id="percent-number-3"></div>
-                            <div class="column" id="percent-column-3"></div>
-                        </div>
-                        <button id="close-board" onclick="closeAskViewerBoard();">Close</button>
+                
+                    <button class="close-board" onclick="closeAskViewerBoard();">x</button>
                     
                 </div>
                 <div>
@@ -71,15 +66,17 @@
                             <div class="icon-major" style="background-image:url('logoMajors/Art.png');background-size: 100% 100%;" id="art" onclick="askProfessor(3);"></div>
                         </div>
                         <div id="suggest-answer"></div>
-                        <button id="close-board" style="position: absolute; top: 5px; right: 5px; border-radius: 2px;" onclick="closeAskProfessorBoard();">x</button>
+                        <button class="close-board"  onclick="closeAskProfessorBoard();">x</button>
                     </div>
                 </div>
             </div>
             <div id="start-board">
-                <input type="text" id="player-name" placeholder="Nhập tên của bạn">
+                <form onsubmit="startGame(event);">
+                <input type="text" id="player-name" placeholder="Nhập tên của bạn" required>
     
-                <button id="start" onclick="startGame()">Start</button>
+                <button type="submit" id="start">Start</button>
                 <button id="guide">Hướng dẫn</button>
+                </form>
             </div>
             <div class="animated" id="question">
                 <div id="title-question"></div>

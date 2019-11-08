@@ -45,16 +45,16 @@ function displayListQuestion(arrayQuestions) {
         for ( i = (indexPage * 10) - 10 ; i < (indexPage * 10) ;i++){
             list += `<tr>
                 <td>${i+1}</td>
-                <td class="title" ><span  onmousemove="tooltipShow(${i});" onmouseout="tooltipOff(${i});" >${arrayQuestions[i].title}</span><div class="pop-up" id="tool-tip-${i}"></div></td> 
-                <td><button  id="edit" class="btn btn-primary" onclick="editQuestion(${copyQuestions[i].ID});">Sửa</button></td><td> <button class="btn btn-danger" onclick="deleteQuestion(${copyQuestions[i].ID});">Xóa</button></td>
+                <td class="title" ><span  onmousemove="tooltipShow(${arrayQuestions[i].ID});" onmouseout="tooltipOff(${arrayQuestions[i].ID});" >${arrayQuestions[i].title}</span><div class="pop-up" id="tool-tip-${arrayQuestions[i].ID}"></div></td> 
+                <td><button  id="edit" class="btn btn-primary" onclick="editQuestion(${arrayQuestions[i].ID});">Sửa</button></td><td> <button class="btn btn-danger" onclick="deleteQuestion(${arrayQuestions[i].ID});">Xóa</button></td>
                 </tr>`;
         }
     }else{
         for ( i = (indexPage * 10) - 10 ; i < arrayQuestions.length ;i++){
             list += `<tr>
             <td>${i+1}</td>
-            <td class="title" ><span  onmousemove="tooltipShow(${i});" onmouseout="tooltipOff(${i});" >${arrayQuestions[i].title}</span><div class="pop-up" id="tool-tip-${i}"></div></td> 
-            <td><button  id="edit" class="btn btn-primary" onclick="editQuestion(${copyQuestions[i].ID});">Sửa</button></td><td> <button class="btn btn-danger" onclick="deleteQuestion(${copyQuestions[i].ID});">Xóa</button></td>
+            <td class="title" ><span  onmousemove="tooltipShow(${arrayQuestions[i].ID});" onmouseout="tooltipOff(${arrayQuestions[i].ID});" >${arrayQuestions[i].title}</span><div class="pop-up" id="tool-tip-${arrayQuestions[i].ID}"></div></td> 
+            <td><button  id="edit" class="btn btn-primary" onclick="editQuestion(${arrayQuestions[i].ID});">Sửa</button></td><td> <button class="btn btn-danger" onclick="deleteQuestion(${arrayQuestions[i].ID});">Xóa</button></td>
             </tr>`;
 
         }
@@ -124,6 +124,16 @@ function deleteQuestion(idReturn) {
 //Show popUP add câu hỏi
 function addQuestion() {
     document.getElementById("pop-up-add-question").style.display = "block";
+    document.getElementById("title-question-add").value = '';
+    document.getElementById("level-add").value = '';
+    document.getElementById("major-add").value = '';
+    // document.getElementById("right-answer-edit").value = questions[indexQuestion].rightAnswer;
+    document.getElementById("right-answer-add").value = '';
+    for (i = 0 ; i < 4 ; i++){
+        document.getElementById(`answer-add-${i}`).value = '';
+
+    }
+    
     
 }
 // Submit adđ câu hỏi
@@ -182,30 +192,26 @@ function submitAdd(e) {
 // Hiển thị toolTIP
 
 var answerAlphabet =["A","B","C","D"];
-function tooltipShow(index) {
-    for ( i = 0; i <copyQuestions.length;i++){
-        if( i === index){
-            for(j = 0; j < 4; j++){
-                if( copyQuestions[index].answers[j].isRight === true ){
-                    indexRight = j;
-                }
+function tooltipShow(idReturn) {
+    let index = questions.findIndex(x => x.ID === idReturn);
+
+        for(j = 0; j < 4; j++){
+            if( questions[index].answers[j].isRight === true ){
+                indexRight = j;
             }
-            document.getElementById(`tool-tip-${i}`).style.visibility = "visible";
-            document.getElementById(`tool-tip-${i}`).innerHTML = `
-                <span>Right Answer :${answerAlphabet[indexRight]}: ${copyQuestions[index].answers[indexRight].content}</span> <br>
-                <span>Major :  ${copyQuestions[index].major}</span> <br>
-                <span>Level :  ${copyQuestions[index].level}</span>
-            `;
         }
-    }
+        document.getElementById(`tool-tip-${idReturn}`).style.visibility = "visible";
+        document.getElementById(`tool-tip-${idReturn}`).innerHTML = `
+            <span style="color:#007BFF;">Right Answer : &#160 ${answerAlphabet[indexRight]}. ${questions[index].answers[indexRight].content}</span> <br>
+            <span>Major :  ${questions[index].major}</span> <br>
+            <span style="color:#DC3545;" >Level :  ${questions[index].level}</span>
+        `;
+        
+    
 }
-function tooltipOff(index) {
-    for ( i = 0; i <questions.length;i++){
-        if( i === index){
-            document.getElementById(`tool-tip-${i}`).style.visibility = "hidden";
-            document.getElementById(`tool-tip-${i}`).innerHTML = "";
-        }
-    }
+function tooltipOff(idReturn) {
+    document.getElementById(`tool-tip-${idReturn}`).style.visibility = "hidden";
+    document.getElementById(`tool-tip-${idReturn}`).innerHTML = "";
 }
 // Filter câu hỏi
 // var isLevelChecked = false;
@@ -253,6 +259,7 @@ function filter() {
         }
     }
     searchQuestion();
+    
 }
 function searchQuestion(){
     let inputString = document.getElementById('search-bar').value;
