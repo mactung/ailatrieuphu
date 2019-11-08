@@ -85,8 +85,9 @@ function editQuestion(idReturn) {
 }
 
 // Thêm câu hỏi
-function submitEdit() {
+function submitEdit(e) {
     // let question = {};
+    e.preventDefault();
     
     questions[indexQuestion].title = document.getElementById("title-question-edit").value;
     questions[indexQuestion].level = Number(document.getElementById("level-edit").value) ;
@@ -94,7 +95,7 @@ function submitEdit() {
     // questions[indexQuestion].rightAnswer = document.getElementById("right-answer-edit").value;
     indexRight = Number(document.getElementById("right-answer-edit").value)
     for (i = 0 ; i < 4 ; i++){
-        copyQuestions[indexQuestion].answers[i].content = document.getElementById(`answer-edit-${i}`).value ;
+        questions[indexQuestion].answers[i].content = document.getElementById(`answer-edit-${i}`).value ;
         if (indexRight === i ){
             questions[indexQuestion].answers[i].isRight = true;
         }else {
@@ -110,11 +111,12 @@ function submitEdit() {
 
 function deleteQuestion(idReturn) {
     console.log(copyQuestions);
-    let index = questions.findIndex(x => x.ID === idReturn);
+    let index = questions.findIndex(question => question.ID === idReturn);
     console.log(index);
     
     questions.splice(index,1);
     filter();
+    // searchQuestion();
 
 
   
@@ -125,11 +127,17 @@ function addQuestion() {
     
 }
 // Submit adđ câu hỏi
-function submitAdd() {
+function submitAdd(e) {
+    e.preventDefault();
+    console.log(e);
+
+
+    findMaxID();
     let addQuestion = {
         title : "",
         major: '', 
         level: 0,
+        ID: 0,
         rightAnswer: "",
         answers : [
             {
@@ -153,6 +161,7 @@ function submitAdd() {
     addQuestion.title = document.getElementById("title-question-add").value;
     addQuestion.level = Number(document.getElementById("level-add").value);
     addQuestion.major = document.getElementById("major-add").value;
+    addQuestion.ID = maxID + 1;
     indexRight = Number(document.getElementById("right-answer-add").value);
     
     for (i = 0 ; i < 4 ; i++){
@@ -164,10 +173,11 @@ function submitAdd() {
         }
     }
     questions.unshift(addQuestion);
-
+    
     document.getElementById("pop-up-add-question").style.display = "none";
 
     filter();
+
 }
 // Hiển thị toolTIP
 
@@ -242,9 +252,103 @@ function filter() {
             
         }
     }
-
-
+    searchQuestion();
+}
+function searchQuestion(){
+    let inputString = document.getElementById('search-bar').value;
+    // let inputString = 'Vua'
+    searchResult = [];
+    for(let i = 0; i < copyQuestions.length; i++){
+        if (copyQuestions[i].title.toLowerCase().includes(inputString.toLowerCase())){
+            searchResult.push(copyQuestions[i]);
+        }
+    }
+    displayListQuestion(searchResult);
+    console.log(inputString)
+    if(inputString = ''){
+        displayListQuestion(copyQuestions);
+    }
     
 }
 
+function sortByOldest(){
+    for(let i = 0; i < copyQuestions.length; i++){
+        for (let j = i+1 ; j < copyQuestions.length; j++){
+            if (copyQuestions[i].ID > copyQuestions[j].ID){
+                let temp = copyQuestions[i];
+                copyQuestions[i] = copyQuestions[j];
+                copyQuestions[j] = temp;
+            }
+        }
+    }
+    displayListQuestion(copyQuestions);
+}
 
+function sortByNewest(){
+    for(let i = 0; i < copyQuestions.length; i++){
+        for (let j = i+1 ; j < copyQuestions.length; j++){
+            if (copyQuestions[i].ID < copyQuestions[j].ID){
+                let temp = copyQuestions[i];
+                copyQuestions[i] = copyQuestions[j];
+                copyQuestions[j] = temp;
+            }
+        }
+    }
+    displayListQuestion(copyQuestions);
+}
+
+function sortByAtoZ(){
+    for(let i = 0; i < copyQuestions.length; i++){
+        for (let j = i+1 ; j < copyQuestions.length; j++){
+            if (copyQuestions[i].title > copyQuestions[j].title){
+                let temp = copyQuestions[i];
+                copyQuestions[i] = copyQuestions[j];
+                copyQuestions[j] = temp;
+            }
+        }
+    }
+    console.log(copyQuestions);
+    displayListQuestion(copyQuestions);
+}
+
+function sortByZtoA(){
+    for(let i = 0; i < copyQuestions.length; i++){
+        for (let j = i+1 ; j < copyQuestions.length; j++){
+            if (copyQuestions[i].title < copyQuestions[j].title){
+                let temp = copyQuestions[i];
+                copyQuestions[i] = copyQuestions[j];
+                copyQuestions[j] = temp;
+            }
+        }
+    }
+    console.log(copyQuestions);
+    displayListQuestion(copyQuestions);
+}
+
+function sortQuestion(){
+    let sortType = document.getElementById('sort').value;
+    switch(sortType){
+        case 'oldest':
+            sortByOldest();
+            break;
+        case 'newest':
+            sortByNewest();
+            break;
+        case 'a-z':
+            sortByAtoZ();
+            break;
+        case 'z-a':
+            sortByZtoA();
+            break;
+    }
+}
+// tìm max ID
+var maxID = 0;
+function findMaxID() {
+    for ( let i = 0; i < questions.length ; i++){
+        if (maxID < questions[i].ID){
+            maxID = questions[i].ID;
+        }
+    }
+    console.log(maxID);
+}

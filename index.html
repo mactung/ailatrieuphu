@@ -26,8 +26,8 @@
         <div id ="main-center">
             <div id="logo"></div>
             <div id="noti-endgame">
-                <div>Số tiền của bạn</div>
-                <button id="play-again" onclick="playAgain()">Chơi lại</button>
+                <div>Số tiền của bạn: <span id="money"></span></div>
+                <button id="play-again-button" onclick="playAgain()">Chơi lại</button>
             </div>
             <div id="noti-wingame">
                 <div>Bạn Thắng</div>
@@ -60,17 +60,19 @@
                     
                 </div>
                 <div>
-                    <table id ="ask-professor-board" onclick="">
-                        <tr>
-                            <td style="width:50px" id="sport" onclick="askProfessor(0);">Sport</td>
-                            <td style="width:50px" id="life" onclick="askProfessor(1);">Life</td>
-                        </tr>
-                        <tr>
-                            <td style="width:50px" id="science" onclick="askProfessor(2);">Science</td>
-                            <td style="width:50px" id="art" onclick="askProfessor(3);">Art</td>
-                        </tr>
+                    <div id ="ask-professor-board" onclick="">
+                        <div >
+                            <div class="icon-major" style="background-image:url('logoMajors/Sport.png');background-size: 100% 100%;" id="sport" onclick="askProfessor(0);"></div>
+                            <div class="icon-major" style="background-image:url('logoMajors/Life.png');background-size: 100% 100%;" id="life" onclick="askProfessor(1);"></div>
+                        </div>
+                        
+                        <div>
+                            <div class="icon-major" style="background-image:url('logoMajors/Science.png');background-size: 100% 100%;" id="science" onclick="askProfessor(2);"></div>
+                            <div class="icon-major" style="background-image:url('logoMajors/Art.png');background-size: 100% 100%;" id="art" onclick="askProfessor(3);"></div>
+                        </div>
                         <div id="suggest-answer"></div>
-                    </table>
+                        <button id="close-board" style="position: absolute; top: 5px; right: 5px; border-radius: 2px;" onclick="closeAskProfessorBoard();">x</button>
+                    </div>
                 </div>
             </div>
             <div id="start-board">
@@ -114,7 +116,7 @@
             <source src="MusicEffect/TRUE1.mp3">
     </audio>
     <audio style="display: none;" id="audio-true-2">
-            <source src="MusicEffect/TRUE2.mp3">
+            <source src="MusicEffect/TRUE2.wav">
     </audio>
     <audio style="display: none;" id="audio-start">
             <source src="MusicEffect/START SOUND.mp3">

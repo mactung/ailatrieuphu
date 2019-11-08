@@ -23,9 +23,14 @@
     <div id="main">
         <div>
             <button onclick="addQuestion();">Thêm câu hỏi</button>
-            <button>Sắp xếp</button>
-            <input type="text">
-            <select name="" id="select-level" onchange="filter();"> Chọn Level
+            <select id="sort" onchange="sortQuestion();">
+                <option value="oldest" selected>Cũ nhất</option>
+                <option value="newest">Mới nhất</option>
+                <option value="a-z">A-Z</option>
+                <option value="z-a">Z-A</option>
+            </select>
+            <input id="search-bar" oninput="searchQuestion()" type="text" placeholder="Nhập từ khóa tiêu đề câu hỏi">
+            <select name="" id="select-level" onchange="filter();">
                 <option select="selected" value="0">Tất cả Level</option>
                 <option value="1">Level 1</option>
                 <option value="2">Level 2</option>
@@ -34,7 +39,7 @@
                 <option value="5">Level 5</option>
                 <option value="6">Level 6</option>
             </select>
-            <select name="" id="select-major" onchange="filter();"> Chọn Level
+            <select name="" id="select-major" onchange="filter();">
                 <option select="selected" value="none">Tất cả Major</option>
                 <option value="sport"> Thể thao </option>
                 <option value="science"> Khoa học </option>
@@ -54,15 +59,16 @@
     </div>
 
     <div class="alert alert-success" id="pop-up-edit-question" >
-        <div>Nội dung câu hỏi: <input type="text" id="title-question-edit"> </div>
+        <form onsubmit="submitEdit(event);" >
+        <div>Nội dung câu hỏi: <input style="width: 200px;" type="text" id="title-question-edit" placeholder="Nhập câu hỏi tại đây" required> </div>
         <div>Các câu trả lời: <br>
-            <input type="text" id="answer-edit-0"> <br>
-            <input type="text" id="answer-edit-1"> <br>
-            <input type="text" id="answer-edit-2"> <br>
-            <input type="text" id="answer-edit-3"> <br>
+            <input type="text" id="answer-edit-0" required> <br>
+            <input type="text" id="answer-edit-1" required> <br>
+            <input type="text" id="answer-edit-2" required> <br>
+            <input type="text" id="answer-edit-3" required> <br>
             <div>Đáp án Đúng 
-                <select  id="right-answer-edit" > 
-                    <option value = "none"> Chọn đáp án đúng </option>
+                <select  id="right-answer-edit" required > 
+                    <option value = ""> Chọn đáp án đúng </option>
                     <option value = "0"> Câu A </option>
                     <option value = "1"> Câu B </option>
                     <option value = "2"> Câu C </option>
@@ -71,7 +77,8 @@
                 </select>
             </div>
             <div>Độ khó 
-                <select  id="level-edit" > 
+                <select  id="level-edit" required> 
+                    <option value = ""> Chọn Level </option>
                     <option value = "1"> Câu 1-5 </option>
                     <option value = "2"> Câu 6-7 </option>
                     <option value = "3"> Câu 8-9 </option>
@@ -81,7 +88,8 @@
                 </select>
             </div>
             <div>Lĩnh vực
-                <select id="major-edit">
+                <select id="major-edit" required>
+                    <option value=""> Chọn Major </option>
                     <option value="sport"> Thể thao </option>
                     <option value="science"> Khoa học </option>
                     <option value="art"> Nghệ thuật </option>
@@ -89,18 +97,20 @@
                 </select>
             </div>
         </div>
-            <button id="submit" onclick="submitEdit();">Submit</button>
+        <button type="submit" >Submit</button>
+        </form>
     </div>
     <div class="alert alert-primary" id="pop-up-add-question" >
-        <div>Nội dung câu hỏi: <input type="text" id="title-question-add"> </div>
+        <form onsubmit="submitAdd(event);" >
+        <div>Nội dung câu hỏi: <input type="text" id="title-question-add" required> </div> <span class="alert-input-title" ></span>
         <div>Các câu trả lời: <br>
-            <input type="text" id="answer-add-0"> <br>
-            <input type="text" id="answer-add-1"> <br>
-            <input type="text" id="answer-add-2"> <br>
-            <input type="text" id="answer-add-3"> <br>
+            <input type="text" id="answer-add-0"  required> <br>
+            <input type="text" id="answer-add-1"  required> <br>
+            <input type="text" id="answer-add-2"  required> <br>
+            <input type="text" id="answer-add-3"  required> <br>
             <div>Đáp án Đúng 
-                <select  id="right-answer-add" > 
-                    <option value = "none"> Chọn đáp án đúng </option>
+                <select  id="right-answer-add"  required > 
+                    <option value = ""> Chọn đáp án đúng </option>
                     <option value = "0"> Câu A </option>
                     <option value = "1"> Câu B </option>
                     <option value = "2"> Câu C </option>
@@ -109,7 +119,8 @@
                 </select>
             </div>
             <div>Độ khó 
-                <select name="level" id="level-add" > 
+                <select name="level" id="level-add" required > 
+                    <option value = ""> Chọn level </option>
                     <option value = "1"> Câu 1-5 </option>
                     <option value = "2"> Câu 6-7 </option>
                     <option value = "3"> Câu 8-9 </option>
@@ -119,7 +130,8 @@
                 </select>
             </div>
             <div>Lĩnh vực
-                <select id="major-add">
+                <select id="major-add" required>
+                    <option value=""> Chọn Major </option>
                     <option value="sport"> Thể thao </option>
                     <option value="science"> Khoa học </option>
                     <option value="art"> Nghệ thuật </option>
@@ -127,7 +139,9 @@
                 </select>
             </div>
         </div>
-            <button id="submit" onclick="submitAdd();">Submit</button>
+        <button type="submit" ></button>
+        <!-- <input type="submit" value="Submit"> -->
+        </form>
     </div>
     <div id="string"></div>
 
