@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Trang quản lí câu hỏi Ai là triệu phú</title>
     <link rel="stylesheet" href="quan_ly.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" >
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
+
 <body>
     <div id="header">
         <div id="logo"></div>
@@ -15,14 +17,14 @@
     <div id="menu-bar">
         <div id="menu-title">Menu</div>
         <ul>
-            <li  onclick="displayListQuestion(questions); ">Câu hỏi</li>
-            
+            <li onclick="displayListQuestion(questions); ">Câu hỏi</li>
+
         </ul>
     </div>
 
     <div id="main">
         <div>
-            <button onclick="addQuestion();">Thêm câu hỏi</button>
+            <button class="btn btn-success" onclick="addQuestion();">Thêm câu hỏi</button>
             <select id="sort" onchange="sortQuestion();">
                 <option value="oldest" selected>Cũ nhất</option>
                 <option value="newest">Mới nhất</option>
@@ -53,99 +55,183 @@
             </table>
         </div>
         <div id="list-index-page">
-            
+
         </div>
 
     </div>
 
-    <div class="alert alert-success" id="pop-up-edit-question" >
-        <form onsubmit="submitEdit(event);" >
-        <div>Nội dung câu hỏi: <input style="width: 200px;" type="text" id="title-question-edit" placeholder="Nhập câu hỏi tại đây" required> </div>
-        <div>Các câu trả lời: <br>
-            <input type="text" id="answer-edit-0" required> <br>
-            <input type="text" id="answer-edit-1" required> <br>
-            <input type="text" id="answer-edit-2" required> <br>
-            <input type="text" id="answer-edit-3" required> <br>
-            <div>Đáp án Đúng 
-                <select  id="right-answer-edit" required > 
-                    <option value = ""> Chọn đáp án đúng </option>
-                    <option value = "0"> Câu A </option>
-                    <option value = "1"> Câu B </option>
-                    <option value = "2"> Câu C </option>
-                    <option value = "3"> Câu D </option>
 
-                </select>
-            </div>
-            <div>Độ khó 
-                <select  id="level-edit" required> 
-                    <option value = ""> Chọn Level </option>
-                    <option value = "1"> Câu 1-5 </option>
-                    <option value = "2"> Câu 6-7 </option>
-                    <option value = "3"> Câu 8-9 </option>
-                    <option value = "4"> Câu 10-11 </option>
-                    <option value = "5"> Câu 11-12 </option>
-                    <option value = "6"> Câu 14-15 </option>
-                </select>
-            </div>
-            <div>Lĩnh vực
-                <select id="major-edit" required>
-                    <option value=""> Chọn Major </option>
-                    <option value="sport"> Thể thao </option>
-                    <option value="science"> Khoa học </option>
-                    <option value="art"> Nghệ thuật </option>
-                    <option value="life"> Đời sống </option>
-                </select>
+    <div class="modal fade" id="exampleModal-edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <form onsubmit="submitEdit(event);">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Sửa câu hỏi</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">Nội dung câu hỏi: <input class="form-control" type="text" id="title-question-edit"
+                                placeholder="Nhập câu hỏi tại đây" required> </div>
+                        <div>Các câu trả lời: <br>
+                            <span>A:</span><input type="text" id="answer-edit-0" required> <br>
+                            <span>B:</span><input type="text" id="answer-edit-1" required> <br>
+                            <span>C:</span><input type="text" id="answer-edit-2" required> <br>
+                            <span>D:</span><input type="text" id="answer-edit-3" required> <br>
+                            <div>Đáp án Đúng
+                                <select id="right-answer-edit" required>
+                                    <option value=""> Chọn đáp án đúng </option>
+                                    <option value="0"> Câu A </option>
+                                    <option value="1"> Câu B </option>
+                                    <option value="2"> Câu C </option>
+                                    <option value="3"> Câu D </option>
+
+                                </select>
+                            </div>
+                            <div>Độ khó
+                                <select id="level-edit" required>
+                                    <option value=""> Chọn Level </option>
+                                    <option value="1"> Câu 1-5 </option>
+                                    <option value="2"> Câu 6-7 </option>
+                                    <option value="3"> Câu 8-9 </option>
+                                    <option value="4"> Câu 10-11 </option>
+                                    <option value="5"> Câu 11-12 </option>
+                                    <option value="6"> Câu 14-15 </option>
+                                </select>
+                            </div>
+                            <div>Lĩnh vực
+                                <select id="major-edit" required>
+                                    <option value=""> Chọn Major </option>
+                                    <option value="sport"> Thể thao </option>
+                                    <option value="science"> Khoa học </option>
+                                    <option value="art"> Nghệ thuật </option>
+                                    <option value="life"> Đời sống </option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </form>
             </div>
         </div>
-        <button type="submit" >Submit</button>
-        </form>
     </div>
-    <div class="alert alert-primary" id="pop-up-add-question" >
-        <form onsubmit="submitAdd(event);" >
-        <div>Nội dung câu hỏi: <input type="text" id="title-question-add" required> </div> <span class="alert-input-title" ></span>
-        <div>Các câu trả lời: <br>
-            <input type="text" id="answer-add-0"  required> <br>
-            <input type="text" id="answer-add-1"  required> <br>
-            <input type="text" id="answer-add-2"  required> <br>
-            <input type="text" id="answer-add-3"  required> <br>
-            <div>Đáp án Đúng 
-                <select  id="right-answer-add"  required > 
-                    <option value = ""> Chọn đáp án đúng </option>
-                    <option value = "0"> Câu A </option>
-                    <option value = "1"> Câu B </option>
-                    <option value = "2"> Câu C </option>
-                    <option value = "3"> Câu C </option>
+    <div class="modal fade" id="exampleModal-add" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <form onsubmit="submitAdd(event);">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Thêm câu hỏi</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">Nội dung câu hỏi: <input class="form-control" type="text" id="title-question-add"
+                                placeholder="Nhập câu hỏi tại đây" required> </div>
+                        <div>Các câu trả lời: <br>
+                            <span>A:</span><input type="text" id="answer-add-0" required> <br>
+                            <span>B:</span><input type="text" id="answer-add-1" required> <br>
+                            <span>C:</span><input type="text" id="answer-add-2" required> <br>
+                            <span>D:</span><input type="text" id="answer-add-3" required> <br>
+                            <div>Đáp án Đúng
+                                <select id="right-answer-add" required>
+                                    <option value=""> Chọn đáp án đúng </option>
+                                    <option value="0"> Câu A </option>
+                                    <option value="1"> Câu B </option>
+                                    <option value="2"> Câu C </option>
+                                    <option value="3"> Câu D </option>
 
-                </select>
-            </div>
-            <div>Độ khó 
-                <select name="level" id="level-add" required > 
-                    <option value = ""> Chọn level </option>
-                    <option value = "1"> Câu 1-5 </option>
-                    <option value = "2"> Câu 6-7 </option>
-                    <option value = "3"> Câu 8-9 </option>
-                    <option value = "4"> Câu 10-11 </option>
-                    <option value = "5"> Câu 11-12 </option>
-                    <option value = "6"> Câu 14-15 </option>
-                </select>
-            </div>
-            <div>Lĩnh vực
-                <select id="major-add" required>
-                    <option value=""> Chọn Major </option>
-                    <option value="sport"> Thể thao </option>
-                    <option value="science"> Khoa học </option>
-                    <option value="art"> Nghệ thuật </option>
-                    <option value="life"> Đời sống </option>
-                </select>
+                                </select>
+                            </div>
+                            <div>Độ khó
+                                <select id="level-add" required>
+                                    <option value=""> Chọn Level </option>
+                                    <option value="1"> Câu 1-5 </option>
+                                    <option value="2"> Câu 6-7 </option>
+                                    <option value="3"> Câu 8-9 </option>
+                                    <option value="4"> Câu 10-11 </option>
+                                    <option value="5"> Câu 11-12 </option>
+                                    <option value="6"> Câu 14-15 </option>
+                                </select>
+                            </div>
+                            <div>Lĩnh vực
+                                <select id="major-add" required>
+                                    <option value=""> Chọn Major </option>
+                                    <option value="sport"> Thể thao </option>
+                                    <option value="science"> Khoa học </option>
+                                    <option value="art"> Nghệ thuật </option>
+                                    <option value="life"> Đời sống </option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </form>
             </div>
         </div>
-        <button type="submit" >Submit</button>
-        <!-- <input type="submit" value="Submit"> -->
+    </div>
+
+    <div class="alert alert-primary" id="pop-up-add-question">
+        <div style="text-align: center;">Thêm câu hỏi</div>
+        <form onsubmit="submitAdd(event);">
+            <div>Nội dung câu hỏi: <input type="text" id="title-question-add" required> </div> <span
+                class="alert-input-title"></span>
+            <div>Các câu trả lời: <br>
+                <span>A:</span><input type="text" id="answer-add-0" required> <br>
+                <span>B:</span><input type="text" id="answer-add-1" required> <br>
+                <span>C:</span><input type="text" id="answer-add-2" required> <br>
+                <span>D:</span><input type="text" id="answer-add-3" required> <br>
+                <div>Đáp án Đúng
+                    <select id="right-answer-add" required>
+                        <option value=""> Chọn đáp án đúng </option>
+                        <option value="0"> Câu A </option>
+                        <option value="1"> Câu B </option>
+                        <option value="2"> Câu C </option>
+                        <option value="3"> Câu C </option>
+
+                    </select>
+                </div>
+                <div>Độ khó
+                    <select name="level" id="level-add" required>
+                        <option value=""> Chọn level </option>
+                        <option value="1"> Câu 1-5 </option>
+                        <option value="2"> Câu 6-7 </option>
+                        <option value="3"> Câu 8-9 </option>
+                        <option value="4"> Câu 10-11 </option>
+                        <option value="5"> Câu 11-12 </option>
+                        <option value="6"> Câu 14-15 </option>
+                    </select>
+                </div>
+                <div>Lĩnh vực
+                    <select id="major-add" required>
+                        <option value=""> Chọn Major </option>
+                        <option value="sport"> Thể thao </option>
+                        <option value="science"> Khoa học </option>
+                        <option value="art"> Nghệ thuật </option>
+                        <option value="life"> Đời sống </option>
+                    </select>
+                </div>
+            </div>
+            <button type="submit">Submit</button>
+            <!-- <input type="submit" value="Submit"> -->
         </form>
+        <button class="close-board" onclick="closeAddBoard();">x</button>
+
     </div>
     <div id="string"></div>
-
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="question.js"></script>
     <script src="quan_ly.js"></script>
 </body>
+
 </html>

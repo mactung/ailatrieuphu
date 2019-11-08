@@ -7,7 +7,7 @@
     <title>Ai là triệu phú</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
-    <!-- <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> -->
+    
 
 </head>
 <body >
@@ -27,13 +27,18 @@
         <div id ="main-center">
             <div id="logo"></div>
             <div id="noti-endgame">
-                <div>Số tiền của bạn: <span id="money"></span></div>
+                <div>Số tiền của bạn: <span id="money-end"></span></div>
                 <button id="play-again-button" onclick="playAgain()">Chơi lại</button>
             </div>
             <div id="noti-wingame">
                 <div>Bạn Thắng</div>
+                <div>Số tiền của bạn: <span id="money-win"></span></div>
                 <button id="play-again-button" onclick="playAgain()">Chơi lại</button>
     
+            </div>
+            <div id="noti-require-answer">
+                Bạn cần chọn câu trả lời
+                <button class="close-board" onclick="closeRequireAnswer();">x</button>
             </div>
             <div id="content">
                 <div id="ask-viewer-board-result">
@@ -121,7 +126,7 @@
     <audio style="display: none;" id="audio-intro">
             <source src="MusicEffect/INTRO.mp3">
     </audio>
-    <!-- <iframe allow="autoplay" width="560" height="315" src="MusicEffect/INTRO.mp3" frameborder="0" allowfullscreen></iframe>  -->
+    <iframe allow="autoplay" width="560" height="315" src="MusicEffect/INTRO.mp3" frameborder="0" allowfullscreen></iframe> 
     
     <script src="question.js"></script>
     <script src="script.js"></script>

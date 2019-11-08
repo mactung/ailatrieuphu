@@ -40,6 +40,7 @@ function displayQuestion() {
 
     } else {
         document.getElementById("noti-wingame").style.display = "block";
+        displayMoneyWin(14);
     }
 
 }
@@ -98,7 +99,7 @@ function submitAnswer() {
     if (isSubmit === false){
         isChecked = true;
         if (indexChecked === -1){
-            alert("bạn chưa trả lời")
+            document.getElementById("noti-require-answer").style.display = "block";
             isChecked = false;
         }else {
             checkAnswer();
@@ -106,6 +107,9 @@ function submitAnswer() {
         }
     }
     
+}
+function closeRequireAnswer() {
+    document.getElementById("noti-require-answer").style.display = "none";
 }
 // Kiểm tra câu trả lời
 function checkAnswer() {
@@ -305,5 +309,8 @@ function playIntro (){
 }
 // In số tiền nhận được
 function displayMoney(index) {
-    document.getElementById("money").innerHTML = `$${money[index]} `;
+    document.getElementById("money-end").innerHTML = `$${money[index]} `;
+}
+function displayMoneyWin(index) {
+    document.getElementById("money-win").innerHTML = `$${money[index]} `;
 }

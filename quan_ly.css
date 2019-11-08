@@ -121,3 +121,9 @@ table tr .title {
     width: 85%;
     overflow: hidden;
 }
+.close-board{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    border-radius: 2px;
+}

@@ -68,7 +68,7 @@ var indexRight = null;
 function editQuestion(idReturn) {
     indexQuestion = questions.findIndex(x => x.ID === idReturn);
     console.log(indexQuestion);
-    document.getElementById("pop-up-edit-question").style.display = "block";
+    $("#exampleModal-edit").modal('show');
     
     
     document.getElementById("title-question-edit").value = questions[indexQuestion].title;
@@ -102,7 +102,8 @@ function submitEdit(e) {
             questions[indexQuestion].answers[i].isRight = false;
         }
     }
-    document.getElementById("pop-up-edit-question").style.display = "none";
+
+    $("#exampleModal-edit").modal('hide');
 
     filter();
        
@@ -123,7 +124,7 @@ function deleteQuestion(idReturn) {
 }
 //Show popUP add câu hỏi
 function addQuestion() {
-    document.getElementById("pop-up-add-question").style.display = "block";
+    $("#exampleModal-add").modal('show');
     document.getElementById("title-question-add").value = '';
     document.getElementById("level-add").value = '';
     document.getElementById("major-add").value = '';
@@ -184,7 +185,7 @@ function submitAdd(e) {
     }
     questions.unshift(addQuestion);
     
-    document.getElementById("pop-up-add-question").style.display = "none";
+    $("#exampleModal-add").modal('hide');
 
     filter();
 
@@ -358,4 +359,10 @@ function findMaxID() {
         }
     }
     console.log(maxID);
+}
+function closeAddBoard() {
+    document.getElementById("pop-up-add-question").style.display = "none"
+}
+function closeEditBoard() {
+    document.getElementById("pop-up-edit-question").style.display = "none"
 }
